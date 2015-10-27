@@ -1,0 +1,1038 @@
+[
+{
+  "fields": {
+    "rght": 120,
+    "parent": null,
+    "level": 0,
+    "created_at": "2015-10-22T22:26:36.992Z",
+    "title": "Graines potag\u00e8res",
+    "updated_at": "2015-10-22T22:26:36.992Z",
+    "lft": 1,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 7
+},
+{
+  "fields": {
+    "rght": 12,
+    "parent": null,
+    "level": 0,
+    "created_at": "2015-10-22T22:26:55.919Z",
+    "title": "Plants potagers",
+    "updated_at": "2015-10-22T22:26:55.919Z",
+    "lft": 1,
+    "tree_id": 6
+  },
+  "model": "variety.category",
+  "pk": 8
+},
+{
+  "fields": {
+    "rght": 2,
+    "parent": null,
+    "level": 0,
+    "created_at": "2015-10-22T22:27:04.995Z",
+    "title": "Fruitiers",
+    "updated_at": "2015-10-22T22:27:04.995Z",
+    "lft": 1,
+    "tree_id": 3
+  },
+  "model": "variety.category",
+  "pk": 9
+},
+{
+  "fields": {
+    "rght": 2,
+    "parent": null,
+    "level": 0,
+    "created_at": "2015-10-22T22:27:11.064Z",
+    "title": "Bulbes potagers",
+    "updated_at": "2015-10-22T22:27:11.064Z",
+    "lft": 1,
+    "tree_id": 2
+  },
+  "model": "variety.category",
+  "pk": 10
+},
+{
+  "fields": {
+    "rght": 12,
+    "parent": null,
+    "level": 0,
+    "created_at": "2015-10-22T22:27:26.678Z",
+    "title": "Jardin d'ornement",
+    "updated_at": "2015-10-22T22:27:26.678Z",
+    "lft": 1,
+    "tree_id": 5
+  },
+  "model": "variety.category",
+  "pk": 11
+},
+{
+  "fields": {
+    "rght": 3,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:29:43.857Z",
+    "title": "Aromatiques",
+    "updated_at": "2015-10-22T22:30:30.740Z",
+    "lft": 2,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 12
+},
+{
+  "fields": {
+    "rght": 117,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:31:07.884Z",
+    "title": "M\u00e9dicinales",
+    "updated_at": "2015-10-22T22:31:07.884Z",
+    "lft": 116,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 13
+},
+{
+  "fields": {
+    "rght": 49,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:31:38.828Z",
+    "title": "L\u00e9gumes feuilles",
+    "updated_at": "2015-10-22T22:31:38.828Z",
+    "lft": 8,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 14
+},
+{
+  "fields": {
+    "rght": 75,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:32:13.901Z",
+    "title": "L\u00e9gumes fruits",
+    "updated_at": "2015-10-22T22:32:13.901Z",
+    "lft": 50,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 15
+},
+{
+  "fields": {
+    "rght": 87,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:32:55.882Z",
+    "title": "L\u00e9gumes grains / gousses",
+    "updated_at": "2015-10-22T22:32:55.882Z",
+    "lft": 76,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 16
+},
+{
+  "fields": {
+    "rght": 115,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:33:15.414Z",
+    "title": "L\u00e9gumes racines",
+    "updated_at": "2015-10-22T22:33:15.414Z",
+    "lft": 88,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 17
+},
+{
+  "fields": {
+    "rght": 5,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:36:29.395Z",
+    "title": "Courges",
+    "updated_at": "2015-10-22T22:36:29.395Z",
+    "lft": 4,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 18
+},
+{
+  "fields": {
+    "rght": 11,
+    "parent": 8,
+    "level": 1,
+    "created_at": "2015-10-22T22:42:51.841Z",
+    "title": "Pommes de terre",
+    "updated_at": "2015-10-22T22:42:51.841Z",
+    "lft": 2,
+    "tree_id": 6
+  },
+  "model": "variety.category",
+  "pk": 19
+},
+{
+  "fields": {
+    "rght": 8,
+    "parent": 19,
+    "level": 2,
+    "created_at": "2015-10-22T22:43:31.040Z",
+    "title": "Pommes de terre pr\u00e9coces",
+    "updated_at": "2015-10-22T22:43:31.040Z",
+    "lft": 7,
+    "tree_id": 6
+  },
+  "model": "variety.category",
+  "pk": 20
+},
+{
+  "fields": {
+    "rght": 10,
+    "parent": 19,
+    "level": 2,
+    "created_at": "2015-10-22T22:43:57.539Z",
+    "title": "Pommes de terre tardives",
+    "updated_at": "2015-10-22T22:43:57.539Z",
+    "lft": 9,
+    "tree_id": 6
+  },
+  "model": "variety.category",
+  "pk": 21
+},
+{
+  "fields": {
+    "rght": 4,
+    "parent": 19,
+    "level": 2,
+    "created_at": "2015-10-22T22:44:19.215Z",
+    "title": "Pomme de terre anciennes",
+    "updated_at": "2015-10-22T22:44:19.215Z",
+    "lft": 3,
+    "tree_id": 6
+  },
+  "model": "variety.category",
+  "pk": 22
+},
+{
+  "fields": {
+    "rght": 6,
+    "parent": 19,
+    "level": 2,
+    "created_at": "2015-10-22T22:44:35.324Z",
+    "title": "Pommes de terre originales",
+    "updated_at": "2015-10-22T22:44:35.324Z",
+    "lft": 5,
+    "tree_id": 6
+  },
+  "model": "variety.category",
+  "pk": 23
+},
+{
+  "fields": {
+    "rght": 5,
+    "parent": 11,
+    "level": 1,
+    "created_at": "2015-10-22T22:45:45.881Z",
+    "title": "Bulbes de printemps",
+    "updated_at": "2015-10-22T22:45:45.881Z",
+    "lft": 4,
+    "tree_id": 5
+  },
+  "model": "variety.category",
+  "pk": 24
+},
+{
+  "fields": {
+    "rght": 3,
+    "parent": 11,
+    "level": 1,
+    "created_at": "2015-10-22T22:46:44.647Z",
+    "title": "Bulbes d'automne",
+    "updated_at": "2015-10-22T22:46:44.647Z",
+    "lft": 2,
+    "tree_id": 5
+  },
+  "model": "variety.category",
+  "pk": 25
+},
+{
+  "fields": {
+    "rght": 9,
+    "parent": 11,
+    "level": 1,
+    "created_at": "2015-10-22T22:47:23.912Z",
+    "title": "Plants vivaces",
+    "updated_at": "2015-10-22T22:47:23.912Z",
+    "lft": 8,
+    "tree_id": 5
+  },
+  "model": "variety.category",
+  "pk": 26
+},
+{
+  "fields": {
+    "rght": 7,
+    "parent": 11,
+    "level": 1,
+    "created_at": "2015-10-22T22:47:45.196Z",
+    "title": "Graines de fleurs",
+    "updated_at": "2015-10-22T22:47:45.196Z",
+    "lft": 6,
+    "tree_id": 5
+  },
+  "model": "variety.category",
+  "pk": 27
+},
+{
+  "fields": {
+    "rght": 11,
+    "parent": 11,
+    "level": 1,
+    "created_at": "2015-10-22T22:48:08.417Z",
+    "title": "Rosiers",
+    "updated_at": "2015-10-22T22:48:08.417Z",
+    "lft": 10,
+    "tree_id": 5
+  },
+  "model": "variety.category",
+  "pk": 28
+},
+{
+  "fields": {
+    "rght": 119,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-22T22:58:51.728Z",
+    "title": "Tomates",
+    "updated_at": "2015-10-22T22:58:51.728Z",
+    "lft": 118,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 29
+},
+{
+  "fields": {
+    "rght": 7,
+    "parent": 7,
+    "level": 1,
+    "created_at": "2015-10-23T21:36:46.557Z",
+    "title": "L\u00e9gumes asiatiques",
+    "updated_at": "2015-10-23T21:37:24.440Z",
+    "lft": 6,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 30
+},
+{
+  "fields": {
+    "rght": 52,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-23T21:42:24.627Z",
+    "title": "Artichauts",
+    "updated_at": "2015-10-23T21:45:31.520Z",
+    "lft": 51,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 31
+},
+{
+  "fields": {
+    "rght": 54,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-23T21:42:45.766Z",
+    "title": "Aubergines",
+    "updated_at": "2015-10-23T21:45:54.005Z",
+    "lft": 53,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 32
+},
+{
+  "fields": {
+    "rght": 94,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-23T21:43:06.755Z",
+    "title": "Carottes",
+    "updated_at": "2015-10-23T21:46:15.804Z",
+    "lft": 93,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 33
+},
+{
+  "fields": {
+    "rght": 24,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:43:45.689Z",
+    "title": "C\u00e9l\u00e9ris, Fenouils",
+    "updated_at": "2015-10-23T21:48:59.051Z",
+    "lft": 23,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 34
+},
+{
+  "fields": {
+    "rght": 10,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:49:35.778Z",
+    "title": "Arroches",
+    "updated_at": "2015-10-23T21:49:35.778Z",
+    "lft": 9,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 35
+},
+{
+  "fields": {
+    "rght": 12,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:50:15.447Z",
+    "title": "Cardons",
+    "updated_at": "2015-10-23T21:50:15.447Z",
+    "lft": 11,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 36
+},
+{
+  "fields": {
+    "rght": 18,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:55:24.288Z",
+    "title": "Ch\u00e9nopodes",
+    "updated_at": "2015-10-23T21:55:24.288Z",
+    "lft": 17,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 37
+},
+{
+  "fields": {
+    "rght": 14,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:55:46.308Z",
+    "title": "Chicor\u00e9es",
+    "updated_at": "2015-10-23T21:55:46.308Z",
+    "lft": 13,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 38
+},
+{
+  "fields": {
+    "rght": 22,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:56:01.254Z",
+    "title": "Cressons",
+    "updated_at": "2015-10-23T21:56:01.254Z",
+    "lft": 21,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 39
+},
+{
+  "fields": {
+    "rght": 16,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:56:15.236Z",
+    "title": "Choux",
+    "updated_at": "2015-10-23T21:56:15.236Z",
+    "lft": 15,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 40
+},
+{
+  "fields": {
+    "rght": 20,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:56:44.662Z",
+    "title": "Crambe maritime",
+    "updated_at": "2015-10-23T21:56:44.662Z",
+    "lft": 19,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 41
+},
+{
+  "fields": {
+    "rght": 26,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:57:05.429Z",
+    "title": "Epinards, poir\u00e9es",
+    "updated_at": "2015-10-23T21:57:05.429Z",
+    "lft": 25,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 42
+},
+{
+  "fields": {
+    "rght": 28,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:57:45.716Z",
+    "title": "Ficoides",
+    "updated_at": "2015-10-23T21:57:45.716Z",
+    "lft": 27,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 43
+},
+{
+  "fields": {
+    "rght": 30,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:57:59.373Z",
+    "title": "Laitues",
+    "updated_at": "2015-10-23T21:57:59.373Z",
+    "lft": 29,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 44
+},
+{
+  "fields": {
+    "rght": 32,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:58:19.078Z",
+    "title": "M\u00e2ches",
+    "updated_at": "2015-10-23T21:58:19.078Z",
+    "lft": 31,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 45
+},
+{
+  "fields": {
+    "rght": 34,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:58:56.717Z",
+    "title": "Orties",
+    "updated_at": "2015-10-23T21:58:56.717Z",
+    "lft": 33,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 46
+},
+{
+  "fields": {
+    "rght": 36,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:59:10.444Z",
+    "title": "Oseilles",
+    "updated_at": "2015-10-23T21:59:10.444Z",
+    "lft": 35,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 47
+},
+{
+  "fields": {
+    "rght": 38,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T21:59:29.615Z",
+    "title": "Pissenlits",
+    "updated_at": "2015-10-23T21:59:29.615Z",
+    "lft": 37,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 48
+},
+{
+  "fields": {
+    "rght": 40,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T22:00:06.379Z",
+    "title": "Plantain",
+    "updated_at": "2015-10-23T22:00:06.379Z",
+    "lft": 39,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 49
+},
+{
+  "fields": {
+    "rght": 44,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T22:00:30.344Z",
+    "title": "Rhubarbes",
+    "updated_at": "2015-10-23T22:00:30.344Z",
+    "lft": 43,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 50
+},
+{
+  "fields": {
+    "rght": 48,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T22:01:01.651Z",
+    "title": "T\u00e9tragone cornue",
+    "updated_at": "2015-10-23T22:01:01.651Z",
+    "lft": 47,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 51
+},
+{
+  "fields": {
+    "rght": 42,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T22:01:14.768Z",
+    "title": "Poireaux",
+    "updated_at": "2015-10-23T22:01:14.768Z",
+    "lft": 41,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 52
+},
+{
+  "fields": {
+    "rght": 46,
+    "parent": 14,
+    "level": 2,
+    "created_at": "2015-10-23T22:01:29.067Z",
+    "title": "Roquettes",
+    "updated_at": "2015-10-23T22:01:29.067Z",
+    "lft": 45,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 53
+},
+{
+  "fields": {
+    "rght": 78,
+    "parent": 16,
+    "level": 2,
+    "created_at": "2015-10-23T22:07:45.786Z",
+    "title": "F\u00e8ves",
+    "updated_at": "2015-10-23T22:07:45.786Z",
+    "lft": 77,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 54
+},
+{
+  "fields": {
+    "rght": 58,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:14:36.129Z",
+    "title": "Cyclant\u00e8res",
+    "updated_at": "2015-10-24T22:14:36.129Z",
+    "lft": 57,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 55
+},
+{
+  "fields": {
+    "rght": 56,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:15:02.571Z",
+    "title": "Concombres, cornichons",
+    "updated_at": "2015-10-24T22:15:02.571Z",
+    "lft": 55,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 56
+},
+{
+  "fields": {
+    "rght": 60,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:15:23.083Z",
+    "title": "Fraisiers",
+    "updated_at": "2015-10-24T22:15:23.083Z",
+    "lft": 59,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 57
+},
+{
+  "fields": {
+    "rght": 62,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:17:54.171Z",
+    "title": "Goji",
+    "updated_at": "2015-10-24T22:17:54.171Z",
+    "lft": 61,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 58
+},
+{
+  "fields": {
+    "rght": 64,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:19:02.650Z",
+    "title": "Ma\u00efs",
+    "updated_at": "2015-10-24T22:19:02.650Z",
+    "lft": 63,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 59
+},
+{
+  "fields": {
+    "rght": 66,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:19:29.881Z",
+    "title": "Melons",
+    "updated_at": "2015-10-24T22:19:29.881Z",
+    "lft": 65,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 60
+},
+{
+  "fields": {
+    "rght": 68,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:20:26.273Z",
+    "title": "Okra gombo",
+    "updated_at": "2015-10-24T22:20:26.273Z",
+    "lft": 67,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 61
+},
+{
+  "fields": {
+    "rght": 74,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:21:00.029Z",
+    "title": "Poire melon",
+    "updated_at": "2015-10-24T22:21:00.029Z",
+    "lft": 73,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 62
+},
+{
+  "fields": {
+    "rght": 70,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:21:17.018Z",
+    "title": "Physalis",
+    "updated_at": "2015-10-24T22:21:17.018Z",
+    "lft": 69,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 63
+},
+{
+  "fields": {
+    "rght": 72,
+    "parent": 15,
+    "level": 2,
+    "created_at": "2015-10-24T22:21:39.645Z",
+    "title": "Piments, poivrons",
+    "updated_at": "2015-10-24T22:21:39.645Z",
+    "lft": 71,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 64
+},
+{
+  "fields": {
+    "rght": 80,
+    "parent": 16,
+    "level": 2,
+    "created_at": "2015-10-24T22:22:39.398Z",
+    "title": "Gesse",
+    "updated_at": "2015-10-24T22:22:39.398Z",
+    "lft": 79,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 65
+},
+{
+  "fields": {
+    "rght": 82,
+    "parent": 16,
+    "level": 2,
+    "created_at": "2015-10-24T22:23:02.017Z",
+    "title": "Haricots",
+    "updated_at": "2015-10-24T22:23:02.017Z",
+    "lft": 81,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 66
+},
+{
+  "fields": {
+    "rght": 84,
+    "parent": 16,
+    "level": 2,
+    "created_at": "2015-10-24T22:24:06.004Z",
+    "title": "Lentilles",
+    "updated_at": "2015-10-24T22:24:06.004Z",
+    "lft": 83,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 67
+},
+{
+  "fields": {
+    "rght": 86,
+    "parent": 16,
+    "level": 2,
+    "created_at": "2015-10-24T22:24:22.623Z",
+    "title": "Pois",
+    "updated_at": "2015-10-24T22:24:22.623Z",
+    "lft": 85,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 68
+},
+{
+  "fields": {
+    "rght": 90,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:25:06.984Z",
+    "title": "Bardane",
+    "updated_at": "2015-10-24T22:25:06.984Z",
+    "lft": 89,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 69
+},
+{
+  "fields": {
+    "rght": 92,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:25:23.884Z",
+    "title": "Betterave",
+    "updated_at": "2015-10-24T22:25:23.884Z",
+    "lft": 91,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 70
+},
+{
+  "fields": {
+    "rght": 100,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:26:32.792Z",
+    "title": "C\u00e9leris",
+    "updated_at": "2015-10-24T22:26:32.792Z",
+    "lft": 99,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 71
+},
+{
+  "fields": {
+    "rght": 96,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:26:51.330Z",
+    "title": "Cerfeuil tub\u00e9reux",
+    "updated_at": "2015-10-24T22:26:51.330Z",
+    "lft": 95,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 72
+},
+{
+  "fields": {
+    "rght": 98,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:27:22.102Z",
+    "title": "Chervis",
+    "updated_at": "2015-10-24T22:27:22.102Z",
+    "lft": 97,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 73
+},
+{
+  "fields": {
+    "rght": 102,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:28:02.947Z",
+    "title": "Guimauve",
+    "updated_at": "2015-10-24T22:28:02.947Z",
+    "lft": 101,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 74
+},
+{
+  "fields": {
+    "rght": 104,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:28:26.606Z",
+    "title": "Navets, radis",
+    "updated_at": "2015-10-24T22:28:26.606Z",
+    "lft": 103,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 75
+},
+{
+  "fields": {
+    "rght": 106,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:28:42.223Z",
+    "title": "Panais",
+    "updated_at": "2015-10-24T22:28:42.223Z",
+    "lft": 105,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 76
+},
+{
+  "fields": {
+    "rght": 108,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:29:37.236Z",
+    "title": "Persil",
+    "updated_at": "2015-10-24T22:29:37.236Z",
+    "lft": 107,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 77
+},
+{
+  "fields": {
+    "rght": 110,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:29:50.838Z",
+    "title": "Raifort",
+    "updated_at": "2015-10-24T22:29:50.838Z",
+    "lft": 109,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 78
+},
+{
+  "fields": {
+    "rght": 112,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:30:13.384Z",
+    "title": "Salsifis",
+    "updated_at": "2015-10-24T22:30:13.384Z",
+    "lft": 111,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 79
+},
+{
+  "fields": {
+    "rght": 114,
+    "parent": 17,
+    "level": 2,
+    "created_at": "2015-10-24T22:31:10.668Z",
+    "title": "Scorson\u00e8re",
+    "updated_at": "2015-10-24T22:31:10.668Z",
+    "lft": 113,
+    "tree_id": 4
+  },
+  "model": "variety.category",
+  "pk": 80
+}
+]
