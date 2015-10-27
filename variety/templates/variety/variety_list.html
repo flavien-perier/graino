@@ -1,15 +1,21 @@
+{% load filters %}
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset=utf-8 />
-	<title></title>
-    <link rel="stylesheet" type="text/css" media="screen" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" />
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<!--[if IE]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<![endif]-->
-		<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-
+    <meta charset=utf-8/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <style>
+        .hidden{
+            display:none;
+        }
+    </style>
 
 </head>
 <body>
@@ -24,21 +30,28 @@
     </thead>
     <tbody>
 
-        {% for o in varieties %}
-            <tr>
-                <td>{{ o.title }}</td>
-                <td>{{ o.latin }}</td>
-                <td>{{ o.category}}</td>
-            </tr>
-        {% endfor %}
+    {% for o in varieties %}
+    <tr>
+        <td>{{ o.title }} <span class="hidden">{{ o.title|stripaccents }} </span></td>
+        <td>{{ o.latin }}</td>
+        <td>{{ o.category.title }} <span class="hidden">{{ o.category.title|stripaccents }} </span></td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
 
 
-        <script>
-         $(document).ready(function() {
-    $('#example').DataTable();
-} );
-        </script>
+<script>
+    $(document).ready(function () {
+
+        $('#example').dataTable({
+            "search": {
+                "caseInsensitive": true
+            }
+        });
+    });
+</script>
+
+
 </body>
 </html>
