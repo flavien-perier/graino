@@ -10,7 +10,7 @@ Accéder à la démo(en cours de développement)
 
 Récupération des sources en local
 
-* `git clone https://github.com/martinsam/graino:xw:.git`
+* `git clone https://github.com/martinsam/graino.git`
 
 Installation et activation de l'environnement virtuel
 
