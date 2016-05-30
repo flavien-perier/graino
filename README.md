@@ -10,7 +10,7 @@ Accéder à la démo(en cours de développement)
 
 Récupération des sources en local
 
-* `git clone https://github.com/martinsam/graino.git`
+* `git clone https://github.com/martinsam/graino:xw:.git`
 
 Installation et activation de l'environnement virtuel
 
@@ -31,6 +31,10 @@ A ce niveau là votre base de données est vide. Il reste une dernière étape. 
 * `python manage.py createsuperuser`
 
 Suivez la procédure dans le terminal
+
+Il faud maintenant importer les données dans la base
+
+* 'python manage.py loaddata fixtures/categories.json'
 
 ## Démarrer le serveur en local
 

@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from variety.views import VarietyListView
+
+from variety.views import index, VarietyListView, CategoryListView, forms, reponse, recherche
 
 urlpatterns = [
+    url(r'^$', index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', VarietyListView.as_view(), name='index'),
+    url(r'^varieties_get/', VarietyListView, name='varieties'),
+    url(r'^categories_get/', CategoryListView, name='categories'),
+    url(r'^categories/(?P<category>[\w-]+)/$', recherche, name='category_detail'),
 
+    url(r'^forms/', forms, name='forms'),
+    url(r'^reponse/', reponse, name='reponse'),
 ]
