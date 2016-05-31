@@ -23,6 +23,7 @@ class Category(MPTTModel):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=250, unique=True)
+    url = models.SlugField(max_length=250)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
     level = models.PositiveIntegerField(default=0)
     lft = models.PositiveIntegerField(default=0)
