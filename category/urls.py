@@ -7,6 +7,5 @@ from variety.views import *
 from category.views import *
 
 urlpatterns = [
-    url(r'^varieties/', variety_list_view, name='variety_list_view'),
-    url(r'^categories/(?P<category>[\w-]+)/$', category_detail, name='category_detail'),
+    url(r'^categories/$', category_list_view, name='category_list_view'),
 ]

@@ -16,19 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from variety.views import *
 from graino.views import *
+from variety.views import *
+from category.views import *
 
 urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^admin/', include(admin.site.urls)),
-
-    url(r'^varieties/', variety_list_view, name='variety_list_view'),
-    url(r'^categories/$', category_list_view, name='category_list_view'),
-    url(r'^categories/(?P<category>[\w-]+)/$', category_detail, name='category_detail'),
-
-    url(r'^forms/', forms, name='forms'),
-    url(r'^reponse/', reponse, name='reponse'),
-    
-    url(r'^update/', update, name='update'),
 ]
+
+urlpatterns += [url('^', include('variety.urls'))]
+urlpatterns += [url('^', include('category.urls'))]

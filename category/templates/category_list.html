@@ -1,6 +1,7 @@
 {% include "head.html" %}
-{% load mptt_tags filters %}
-    <body>
+{% load mptt_tags %}
+
+
         <ul class="root">
             {% for o, structure in categories|tree_info %}
                 {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}

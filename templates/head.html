@@ -1,16 +1,33 @@
+{% load static %}
 {% load filters %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset=utf-8/>
         <title>Graino</title>
         <link rel="stylesheet" type="text/css" media="screen" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
-        <link rel="stylesheet" type="text/css" media="screen" href="{{STATIC_URL}}css/style.css"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-        <link rel="stylesheet" href="{{STATIC_URL}}/meda/rocssti-fr.css"/>
+        <link rel="stylesheet" href="{% static "rocssti-fr.css" %}"/>
+        <link rel="stylesheet" href="{% static "style.css" %}"/>
         <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        
     </head>
+    <body>
+        <header>
+            <a href="/" title="Accueil">
+                <div id="logo">
+                    <img src="{% static "logo.png" %}" alt="Logo du site." title="Logo"/>
+                    <h1>Graino</h1>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/" title="accueil">Accueil</a></li>
+                    <li><a href="/categories" title="categories">Catégories</a></li>
+                    <li><a href="/varieties" title="Variétées">Variétées</a></li>
+                </ul>
+            </nav>
+        </header>

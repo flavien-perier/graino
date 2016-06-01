@@ -1,0 +1,140 @@
+/*////////////////////////////////////////////////////////////////////////
+//header
+////////////////////////////////////////////////////////////////////////*/
+
+html
+{
+    padding:10px;
+}
+
+header
+{
+    margin-top:-20px;
+    margin-bottom:50px;
+}
+
+header #logo
+{
+	background-color:#E2E2E2;
+	border-radius:10px;
+	height:95px;
+    width:250px;
+    float:left;
+    margin-left:0px;
+	position: relative;
+}
+
+header #logo img
+{
+	height:88%;
+    top:6%;
+    left:3%;
+	position:absolute;
+}
+
+header #logo h1
+{
+	font-family:"Comic Sans MS";
+    color:#7C0000;
+    font-size:30px;
+	left:45%;
+    transform: translateY(-50%); 
+    top:0%;
+    position: absolute;
+}
+
+header nav
+{	
+	background-color:#E2E2E2;
+	border-radius:10px;
+	height:95px;
+	width:580px;
+	margin-left:260px;
+    position: relative;
+}
+
+header nav a
+{
+	font-size:30px;
+	font-family:"Comic Sans MS";
+	color:#1111A0;
+	text-decoration:none;
+}
+
+header nav a:hover
+{
+	color:#7C0000;
+	text-decoration:underline;
+}
+
+
+header ul
+{
+	list-style-type:none;
+}
+
+header nav li
+{
+	display:inline-block;
+	margin-left:30px;
+	margin-top:26px;
+}
+
+@media screen and (max-width:1000px)
+{
+	header #logo
+	{
+		margin-left:-260px;
+		transition: margin-left 1s;
+		transition-timing-function:linear;
+	}
+	header nav
+	{
+		margin-left:0px;
+		transition: margin-left 1s;
+		transition-timing-function:linear;
+	}
+}
+
+@media screen and (max-width:500px)
+{	
+	header nav
+	{	
+		height:175px;
+		width:250px;
+		padding-left:0px;
+		padding-top:1px;
+		margin-left:0px;
+	}
+	
+	header nav a
+	{
+		font-size:15px;
+	}
+	
+	header nav ul
+	{
+		list-style-type:circle;
+	}
+	
+	header nav li
+	{
+		display:list-item;
+	}
+}
+
+
+/*////////////////////////////////////////////////////////////////////////
+//div
+////////////////////////////////////////////////////////////////////////*/
+
+.block
+{
+    height:150px;
+    width:150px;
+    text-align:center;
+    margin:20px;
+    background-color:cyan;
+    color:blue;
+    display:inline-block;
+}
