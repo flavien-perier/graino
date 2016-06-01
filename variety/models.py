@@ -15,6 +15,10 @@ class Variety(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__ (self):
+        return self.title
+
+
     class Meta:
         verbose_name_plural = "varieties"
 
