@@ -13,10 +13,6 @@ from variety.models import Variety, Category
 # Variety view
 
 
-def variety_list_view(request):
-    v_variety = Variety.objects.all()
-    return render_to_response('variety_list.html', {'varieties': v_variety})
-
 def update(request):
     for o in Category.objects.all():
         o.url = slugify(o.title)

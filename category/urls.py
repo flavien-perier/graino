@@ -8,4 +8,5 @@ from category.views import *
 
 urlpatterns = [
     url(r'^categories/$', category_list_view, name='category_list_view'),
+    url(r'^categories/(?P<categ>[\w-]+)/$', category_detail, name='category_detail'),
 ]

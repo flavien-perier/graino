@@ -19,11 +19,22 @@ def category_list_view(request):
     v_categories = Category.objects.all()
     return render_to_response('category_list.html', {'categories': v_categories})
     
-def category_detail(request, category):
-    page = category
-    category = Category.objects.get(url=category)
-    categories = category.get_children()
-    descendant = category.get_descendants(include_self=False)
-    varieties = Variety.objects.filter(category__in=descendant)
-    ascendants = category.get_ancestors(ascending=False, include_self=False)
-    return render_to_response('category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'page':page})
+def category_detail(request, categ):
+
+    try:
+        category = Category.objects.get(url=categ)
+        nom_page = category.title
+    
+        descendant = category.get_descendants(include_self=False)
+        ascendants = category.get_ancestors(ascending=False, include_self=False)
+        
+        categories = category.get_children()
+        
+        if not descendant:
+            varieties = Variety.objects.filter(category__url=categ)
+        else:
+            varieties = Variety.objects.filter(category__in=descendant)
+
+        return render_to_response('category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'nom_page':nom_page})
+    except:
+        return render_to_response('404.html')

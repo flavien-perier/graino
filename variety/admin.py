@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from .models import Variety, Category
+from .models import *
 
 from django_mptt_admin.admin import DjangoMpttAdmin
 from mptt.forms import TreeNodeChoiceField
@@ -20,3 +20,11 @@ class CategoryAdmin(DjangoMpttAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Profile)
+admin.site.register(Follow)
+admin.site.register(Group)
+admin.site.register(User_group)
+admin.site.register(Desire)
+admin.site.register(Catalog)
+admin.site.register(Desire_group)
+admin.site.register(Catalog_group)

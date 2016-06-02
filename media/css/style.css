@@ -28,13 +28,13 @@ header #logo img
 {
 	height:88%;
     top:6%;
-    left:3%;
+    left:5%;
 	position:absolute;
 }
 
 header #logo h1
 {
-	font-family:"Comic Sans MS";
+	font-family:"Arial";
     color:#7C0000;
     font-size:30px;
 	left:45%;
@@ -48,15 +48,16 @@ header nav
 	background-color:#E2E2E2;
 	border-radius:10px;
 	height:95px;
-	width:580px;
-	margin-left:260px;
+	width:615px;
+	margin-left:auto;
+    margin-right:auto;
     position: relative;
 }
 
 header nav a
 {
 	font-size:30px;
-	font-family:"Comic Sans MS";
+	font-family:"Arial";
 	color:#1111A0;
 	text-decoration:none;
 }
@@ -80,19 +81,33 @@ header nav li
 	margin-top:26px;
 }
 
-@media screen and (max-width:1000px)
+header .slogan
+{
+    width:535px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:-7px;
+    position: relative;
+    
+}
+
+@media screen and (max-width:1150px)
+{
+    header #logo
+	{
+		width:95px;
+	}
+	header #logo h1
+	{
+		display:none;
+	}
+}
+
+@media screen and (max-width:850px)
 {
 	header #logo
 	{
-		margin-left:-260px;
-		transition: margin-left 1s;
-		transition-timing-function:linear;
-	}
-	header nav
-	{
-		margin-left:0px;
-		transition: margin-left 1s;
-		transition-timing-function:linear;
+		display:none;
 	}
 }
 
@@ -100,11 +115,10 @@ header nav li
 {	
 	header nav
 	{	
-		height:175px;
+		height:220px;
 		width:250px;
 		padding-left:0px;
 		padding-top:1px;
-		margin-left:0px;
 	}
 	
 	header nav a
@@ -121,12 +135,43 @@ header nav li
 	{
 		display:list-item;
 	}
+    header .slogan
+    {
+        display:none;
+    }
 }
 
 
 /*////////////////////////////////////////////////////////////////////////
 //div
 ////////////////////////////////////////////////////////////////////////*/
+
+.presentation
+{
+    width:75%;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    word-spacing:50px;
+}
+
+.presentation div
+{
+    display:inline-block;
+    width:300px;
+    word-spacing:5px;
+    margin-top:25px;
+}
+
+.presentation div h2
+{
+    text-align:center;
+}
+
+.presentation div p
+{
+    text-align:left;
+}
 
 .block
 {
@@ -137,4 +182,11 @@ header nav li
     background-color:cyan;
     color:blue;
     display:inline-block;
+}
+
+iframe
+{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
 }
