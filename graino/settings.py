@@ -34,10 +34,13 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graino',
     'variety',
     'category',
+    'account',
     'mptt',
     'django_mptt_admin'
 )
@@ -109,3 +112,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "media"),
 )
+
+SITE_ID = 1

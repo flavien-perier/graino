@@ -7,10 +7,13 @@ from django.utils.text import slugify
 from django.http import HttpResponse 
 from django.shortcuts import render_to_response
 
-from variety.models import Variety, Category
+from variety.models import *
 
-# Create your views here.
+# Graino view
 
 
 def index(request):
     return render_to_response('index.html')
+
+def aide(request):
+    return render_to_response('help.html')

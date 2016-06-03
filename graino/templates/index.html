@@ -1,4 +1,5 @@
 {% include "head.html" %}
+{% load static %}
             <div class="presentation">
                 <div>
                    <h2>Conserver</h2>
@@ -17,35 +18,23 @@
             <h1 class="aligncenter">Graines potagères</h1>
             <div class="aligncenter">
                 <a href="{{STATIC_URL}}/categories/aromatiques">
-                <div class="block">
-                    Aromatiques
-                </div>
+                    <img class="block" src="{% static 'img/01.png' %}" alt="Aromatiques" title="Aromatiques"/>
                 </a>
                 <a href="{{STATIC_URL}}/categories/legumes-feuilles">
-                <div class="block">
-                    Feuilles
-                </div>
+                    <img class="block" src="{% static 'img/01.png' %}" alt="Feuilles" title="Feuilles"/>
                 </a>
                 <a href="{{STATIC_URL}}/categories/fruitiers">
-                <div class="block">
-                    Fruits
-                </div>
+                    <img class="block" src="{% static 'img/01.png' %}" alt="Fruits" title="Fruits"/>
                 </a>
                 <a href="{{STATIC_URL}}/categories/legumes-racines">
                 </br>
-                <div class="block">
-                    Racines
-                </div>
+                    <img class="block" src="{% static 'img/01.png' %}" alt="Racines" title="Racines"/>
                 </a>
                 <a href="{{STATIC_URL}}/categories/medicinales">
-                <div class="block">
-                    Médicales
-                </div>
+                    <img class="block" src="{% static 'img/01.png' %}" alt="Médicinales" title="Médicinales"/>
                 </a>
-                <a href="{{STATIC_URL}}/categories/graines">
-                <div class="block">
-                    Grains
-                </div>
+                <a href="{{STATIC_URL}}/categories/graines-potageres">
+                    <img class="block" src="{% static 'img/01.png' %}" alt="Grains" title="Grains"/>
                 </a>
             </div>
             

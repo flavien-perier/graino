@@ -7,10 +7,8 @@ from variety.views import *
 from category.views import *
 from account.views import *
 
-# Category urls
-
+# Account urls
 
 
 urlpatterns = [
-    
 ]

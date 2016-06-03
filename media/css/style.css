@@ -86,9 +86,9 @@ header .slogan
     width:535px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:-7px;
+    margin-top:-2px;
     position: relative;
-    
+    font-size:20px;
 }
 
 @media screen and (max-width:1150px)
@@ -177,10 +177,7 @@ header .slogan
 {
     height:150px;
     width:150px;
-    text-align:center;
     margin:20px;
-    background-color:cyan;
-    color:blue;
     display:inline-block;
 }
 
@@ -189,4 +186,14 @@ iframe
     display:block;
     margin-left:auto;
     margin-right:auto;
+}
+
+ul
+{
+    list-style-type:square;
+}
+
+ul a
+{
+    font-size:14px;
 }
