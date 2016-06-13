@@ -15,7 +15,7 @@ admin.site.register(Variety, VarietyAdmin)
 
 
 class CategoryAdmin(DjangoMpttAdmin):
-    fields = ('title', 'parent')
+    fields = ('title', 'parent', 'illustration')
     list_display = ('title', 'parent', 'level')
 
 

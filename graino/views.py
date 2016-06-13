@@ -13,7 +13,16 @@ from variety.models import *
 
 
 def index(request):
-    return render_to_response('index.html')
+    categ = Category.objects
+    
+    return render(request, 'accueil.html', {
+        'aromatiques': categ.get(url='aromatiques'),
+        'legumes_feuilles': categ.get(url='legumes-feuilles'),
+        'fruitiers': categ.get(url='fruitiers'),
+        'legumes_racines': categ.get(url='legumes-racines'),
+        'medicinales': categ.get(url='medicinales'),
+        'graines_potageres': categ.get(url='graines-potageres')
+    }, content_type='text/html')
 
 def aide(request):
-    return render_to_response('help.html')
+    return render(request, 'help.html', content_type='text/html')

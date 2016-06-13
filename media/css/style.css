@@ -4,23 +4,23 @@
 
 html
 {
-    padding:10px;
+    padding:1em;
 }
 
 header
 {
-    margin-top:-20px;
-    margin-bottom:50px;
+    margin-top:-1.75em;
+    margin-bottom:5em;
 }
 
 header #logo
 {
 	background-color:#E2E2E2;
-	border-radius:10px;
-	height:95px;
-    width:250px;
+	border-radius:1em;
+	height:7em;
+    width:19em;
     float:left;
-    margin-left:0px;
+    margin-left:0em;
 	position: relative;
 }
 
@@ -36,7 +36,7 @@ header #logo h1
 {
 	font-family:"Arial";
     color:#7C0000;
-    font-size:30px;
+    font-size:2.3em;
 	left:45%;
     transform: translateY(-50%); 
     top:0%;
@@ -44,11 +44,11 @@ header #logo h1
 }
 
 header nav
-{	
+{
 	background-color:#E2E2E2;
-	border-radius:10px;
-	height:95px;
-	width:615px;
+	border-radius:1em;
+	height:7em;
+	width:49em;
 	margin-left:auto;
     margin-right:auto;
     position: relative;
@@ -56,9 +56,9 @@ header nav
 
 header nav a
 {
-	font-size:30px;
-	font-family:"Arial";
+    font-family:"Arial";
 	color:#1111A0;
+	font-size:2.3em;
 	text-decoration:none;
 }
 
@@ -77,25 +77,24 @@ header ul
 header nav li
 {
 	display:inline-block;
-	margin-left:30px;
-	margin-top:26px;
+	margin-left:2.8em;
+	margin-top:2em;
 }
 
 header .slogan
 {
-    width:535px;
+    width:30em;
     margin-left:auto;
     margin-right:auto;
-    margin-top:-2px;
     position: relative;
-    font-size:20px;
+    font-size:1.4em;
 }
 
-@media screen and (max-width:1150px)
+@media screen and (max-width:78em)
 {
     header #logo
 	{
-		width:95px;
+		width:6.9em;
 	}
 	header #logo h1
 	{
@@ -103,7 +102,7 @@ header .slogan
 	}
 }
 
-@media screen and (max-width:850px)
+@media screen and (max-width:57em)
 {
 	header #logo
 	{
@@ -111,19 +110,19 @@ header .slogan
 	}
 }
 
-@media screen and (max-width:500px)
+@media screen and (max-width:40em)
 {	
 	header nav
 	{	
-		height:220px;
-		width:250px;
-		padding-left:0px;
-		padding-top:1px;
+		height:17em;
+		width:17em;
+		padding-left:0em;
+		padding-top:0.4em;
 	}
 	
 	header nav a
 	{
-		font-size:15px;
+		font-size:1em;
 	}
 	
 	header nav ul
@@ -149,18 +148,18 @@ header .slogan
 .presentation
 {
     width:75%;
-    text-align:center;
     margin-left:auto;
     margin-right:auto;
-    word-spacing:50px;
+    word-spacing:4.5em;
+    text-align:center;
 }
 
 .presentation div
 {
     display:inline-block;
-    width:300px;
-    word-spacing:5px;
-    margin-top:25px;
+    width:22em;
+    word-spacing:0.4em;
+    margin-top:2em;
 }
 
 .presentation div h2
@@ -170,14 +169,14 @@ header .slogan
 
 .presentation div p
 {
-    text-align:left;
+    text-align:justify;
 }
 
 .block
 {
-    height:150px;
-    width:150px;
-    margin:20px;
+    height:12em;
+    width:12em;
+    margin:1.5em;
     display:inline-block;
 }
 
@@ -195,5 +194,5 @@ ul
 
 ul a
 {
-    font-size:14px;
+    font-size:1.2em;
 }

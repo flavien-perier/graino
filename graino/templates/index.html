@@ -1,44 +1,48 @@
-{% include "head.html" %}
 {% load static %}
-            <div class="presentation">
-                <div>
-                   <h2>Conserver</h2>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt sem eget nisl placerat, eu interdum tortor scelerisque. Nunc nunc urna, pharetra a nulla id, bibendum varius orci. Sed ipsum eros, ullamcorper vel pulvinar id, sodales non metus. Proin nec auctor nunc, ut semper risus. Vivamus tristique lorem ipsum, nec porta sapien malesuada eu. Mauris leo neque, elementum sed erat id, gravida mattis tellus. Aliquam erat volutpat. Integer pellentesque vitae erat sed scelerisque. </p>
+{% load filters %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Graino</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+        <script src="{% static "js/tableaux.js" %}"></script>
+        <link rel="stylesheet" href="{% static "css/rocssti-fr.css" %}"/>
+        <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header>
+            <a href="/" title="Accueil">
+                <div id="logo">
+                    <img src="{% static "img/logo.png" %}" alt="Logo du site." title="Logo"/>
+                    <h1>Graino</h1>
                 </div>
-                <div>
-                   <h2>Partager</h2>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt sem eget nisl placerat, eu interdum tortor scelerisque. Nunc nunc urna, pharetra a nulla id, bibendum varius orci. Sed ipsum eros, ullamcorper vel pulvinar id, sodales non metus. Proin nec auctor nunc, ut semper risus. Vivamus tristique lorem ipsum, nec porta sapien malesuada eu. Mauris leo neque, elementum sed erat id, gravida mattis tellus. Aliquam erat volutpat. Integer pellentesque vitae erat sed scelerisque. </p>
-                </div>
-                <div>
-                   <h2>Documenter</h2>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt sem eget nisl placerat, eu interdum tortor scelerisque. Nunc nunc urna, pharetra a nulla id, bibendum varius orci. Sed ipsum eros, ullamcorper vel pulvinar id, sodales non metus. Proin nec auctor nunc, ut semper risus. Vivamus tristique lorem ipsum, nec porta sapien malesuada eu. Mauris leo neque, elementum sed erat id, gravida mattis tellus. Aliquam erat volutpat. Integer pellentesque vitae erat sed scelerisque. </p>
-                </div>
-            </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/" title="accueil">Accueil</a></li>
+                    <li><a href="/categories" title="Categories">Catégories</a></li>
+                    <li><a href="/aide" title="Aide">Aide</a></li>
+                    <li><a href="https://github.com/martinsam/graino" title="Github">Github</a></li>
+                </ul>
+            </nav>
+            <div class="slogan nomobile">Plateforme d'échange de semences libres</div>
             
-            <h1 class="aligncenter">Graines potagères</h1>
-            <div class="aligncenter">
-                <a href="{{STATIC_URL}}/categories/aromatiques">
-                    <img class="block" src="{% static 'img/01.png' %}" alt="Aromatiques" title="Aromatiques"/>
-                </a>
-                <a href="{{STATIC_URL}}/categories/legumes-feuilles">
-                    <img class="block" src="{% static 'img/01.png' %}" alt="Feuilles" title="Feuilles"/>
-                </a>
-                <a href="{{STATIC_URL}}/categories/fruitiers">
-                    <img class="block" src="{% static 'img/01.png' %}" alt="Fruits" title="Fruits"/>
-                </a>
-                <a href="{{STATIC_URL}}/categories/legumes-racines">
-                </br>
-                    <img class="block" src="{% static 'img/01.png' %}" alt="Racines" title="Racines"/>
-                </a>
-                <a href="{{STATIC_URL}}/categories/medicinales">
-                    <img class="block" src="{% static 'img/01.png' %}" alt="Médicinales" title="Médicinales"/>
-                </a>
-                <a href="{{STATIC_URL}}/categories/graines-potageres">
-                    <img class="block" src="{% static 'img/01.png' %}" alt="Grains" title="Grains"/>
-                </a>
-            </div>
-            
-            <h1 class="aligncenter">Les grainotèques</h1>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88916.29497592128!2d1.161686480435562!3d45.858619500272816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f934afe6680461%3A0x10be4a3159364d11!2sLimoges!5e0!3m2!1sfr!2sfr!4v1464885277511" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </body>
+            {% if request.user.is_authenticated %}
+                <a href="{{STATIC_URL}}/logout">Deconnexion</a>
+            {% else %}
+                <a href="{{STATIC_URL}}/login">Connexion</a>
+            {% endif %}
+        </header>
+        {% block main %}
+        
+        {% endblock %}
+        
+    </head>
 </html>

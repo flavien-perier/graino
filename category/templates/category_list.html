@@ -1,56 +1,60 @@
-{% include "head.html" %}
-{% load filters %}
+{% extends "index.html" %}
+{% load static %}
 {% load mptt_tags %}
+{% load filters %}
 
-        <div class="cat_parents">
-            {% if cat_parents != NULL %}
-                <a href='{{STATIC_URL}}/categories/'>home</a>
-            {% else %}
-                home
-            {% endif %}
+{% block main %}
+    <div class="cat_parents">
+        {% if cat_parents != NULL %}
+            <a href='{{STATIC_URL}}/categories/'>home</a>
+        {% else %}
+            home
+        {% endif %}
 
-            {% for o in cat_parents %}
-                >> <a href='{{STATIC_URL}}/categories/{{ o.url }}'>{{ o.title }}</a> 
+        {% for o in cat_parents %}
+            >> <a href='{{STATIC_URL}}/categories/{{ o.url }}'>{{ o.title }}</a> 
+        {% endfor %}
+        
+        {% if cat_parents != NULL %}
+            >> {{ nom_page }}
+
+        {% endif %}
+
+    </div>
+    
+    {% if categories != NULL %}
+        <ul class="root">
+            {% for o, structure in categories|tree_info %}
+                {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
+                    {% if o.illustration %}
+                        <img src="/{{ o.illustration }}" style="height:100px;"/>
+                    {% endif %}
+                    <a href="{{STATIC_URL}}{{ o.url }}">{{ o.title }}</a>
+                    <!--<a href="{\% url category_detail o.url %\}">{{ o.title }}</a>-->
+                {% for level in structure.closed_levels %}</li></ul>{% endfor %}
             {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% if varieties != NULL  %}
+        <table id="example" class="display" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Nom commun</th>
+                <th>Nom latin</th>
+                <th>Catégories</th>
+            </tr>
+            </thead>
+            <tbody>
             
-            {% if cat_parents != NULL %}
-                >> {{ nom_page }}
-
-            {% endif %}
-
-        </div>
-        
-        {% if categories != NULL %}
-            <ul class="root">
-                {% for o, structure in categories|tree_info %}
-                    {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
-                        <a href="{{STATIC_URL}}/categories/{{ o.url }}">{{ o.title }}</a>
-                        <!--<a href="{\% url category_detail o.url %\}">{{ o.title }}</a>-->
-                    {% for level in structure.closed_levels %}</li></ul>{% endfor %}
-                {% endfor %}
-            </ul>
-        {% endif %}
-        
-        {% if varieties != NULL  %}
-            <table id="example" class="display" width="100%" cellspacing="0">
-                <thead>
-                <tr>
-                    <th>Nom commun</th>
-                    <th>Nom latin</th>
-                    <th>Catégories</th>
-                </tr>
-                </thead>
-                <tbody>
-                
-                {% for o in varieties %}
-                <tr>
-                    <td>{{ o.title }} <span class="hidden">{{ o.title|stripaccents }} </span></td>
-                    <td>{{ o.latin }}</td>
-                    <td>{{ o.category.title }} <span class="hidden">{{ o.category.url }} </span></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
-    </body>
-</html>
+            {% for o in varieties %}
+            <tr>
+                <td>{{ o.title }} <span class="hidden">{{ o.title|stripaccents }} </span></td>
+                <td>{{ o.latin }}</td>
+                <td>{{ o.category.title }} <span class="hidden">{{ o.category.url }} </span></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

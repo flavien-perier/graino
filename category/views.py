@@ -14,7 +14,7 @@ from variety.models import *
 
 def category_list_view(request):
     v_categories = Category.objects.all()
-    return render_to_response('category_list.html', {'categories': v_categories})
+    return render(request, 'category_list.html', {'categories': v_categories}, content_type='text/html')
     
 def category_detail(request, categ):
 
@@ -32,6 +32,6 @@ def category_detail(request, categ):
         else:
             varieties = Variety.objects.filter(category__in=descendant)
 
-        return render_to_response('category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'nom_page':nom_page})
+        return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'nom_page':nom_page}, content_type='text/html')
     except:
-        return render_to_response('404.html')
+        return render(request, '404.html', content_type='text/html')

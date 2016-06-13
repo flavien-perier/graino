@@ -1,4 +1,6 @@
-{% include "head.html" %}
-        <h1 class="aligncenter">Erreur 404</h1>
-    </body>
-</html>
+{% extends "index.html" %}
+{% load static %}
+
+{% block main %}
+    <h1 class="aligncenter">Erreur 404</h1>
+{% endblock %}
