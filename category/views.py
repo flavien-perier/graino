@@ -1,4 +1,6 @@
-from django.shortcuts import render, HttpResponse 
+﻿# -*- coding: utf-8 -*-
+
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.views.generic.list import ListView 
 from django.utils import timezone 
 from django import forms 
@@ -8,6 +10,8 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
 from variety.models import *
+
+from .forms import AddCategoryForm
 
 # Category view
 
@@ -35,3 +39,14 @@ def category_detail(request, categ):
         return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'nom_page':nom_page}, content_type='text/html')
     except:
         return render(request, '404.html', content_type='text/html')
+
+def add_category(request):
+    if request.method == "POST":
+        form = AddCategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = AddCategoryForm()
+        
+    return render(request, 'add_category.html', {'form' : form}, content_type='text/html')

@@ -29,7 +29,7 @@
                     {% if o.illustration %}
                         <img src="/{{ o.illustration }}" style="height:100px;"/>
                     {% endif %}
-                    <a href="{{STATIC_URL}}{{ o.url }}">{{ o.title }}</a>
+                    <a href="{{STATIC_URL}}/categories/{{ o.url }}">{{ o.title }}</a>
                     <!--<a href="{\% url category_detail o.url %\}">{{ o.title }}</a>-->
                 {% for level in structure.closed_levels %}</li></ul>{% endfor %}
             {% endfor %}
