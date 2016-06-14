@@ -21,30 +21,29 @@ def category_list_view(request):
     return render(request, 'category_list.html', {'categories': v_categories}, content_type='text/html')
     
 def category_detail(request, categ):
+    try:
+        category = Category.objects.get(url=categ)
+        if request.user.username:
+            varieties_ids = Catalog.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
+            inventory = Variety.objects.filter(pk__in=varieties_ids)
+        else:
+            inventory = 0
+        nom_page = category.title
 
-    #try:
-    category = Category.objects.get(url=categ)
-    if request.user.username:
-        varieties_ids = Catalog.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
-        inventory = Variety.objects.filter(pk__in=varieties_ids)
-    else:
-        inventory = 0
-    nom_page = category.title
+        descendant = category.get_descendants(include_self=False)
+        ascendants = category.get_ancestors(ascending=False, include_self=False)
+        
+        categories = category.get_children()
+        
+        if not descendant:
+            varieties = Variety.objects.filter(category__url=categ)
+        else:
+            varieties = Variety.objects.filter(category__in=descendant)
+        
+        return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'nom_page':nom_page, 'inventory':inventory}, content_type='text/html')
 
-    descendant = category.get_descendants(include_self=False)
-    ascendants = category.get_ancestors(ascending=False, include_self=False)
-    
-    categories = category.get_children()
-    
-    if not descendant:
-        varieties = Variety.objects.filter(category__url=categ)
-    else:
-        varieties = Variety.objects.filter(category__in=descendant)
-    
-    return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'cat_parents':ascendants, 'nom_page':nom_page, 'inventory':inventory}, content_type='text/html')
-
-    """except:
-        return render(request, '404.html', content_type='text/html')"""
+    except:
+        return render(request, '404.html', content_type='text/html')
 
 def add_category(request):
     if request.method == "POST":

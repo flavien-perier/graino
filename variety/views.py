@@ -41,16 +41,24 @@ def variety_inventory(request, categ=0):
     
     if request.method == "POST":
         print (request.POST["variety"])
-        if cate==0:
-            form = VarietyInventoryForm(request.POST, initial={'user': User.objects.get(username=request.user.username)})
-        else:
-            form = VarietyInventoryForm(request.POST, initial={'user': User.objects.get(username=request.user.username), 'variety': Variety.objects.get(url=categ)})
+        form = VarietyInventoryForm(request.POST, initial={'user': User.objects.get(username=request.user.username)})
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/variety_inventory/')
     else:
-        if categ==0:
-            form = VarietyInventoryForm(initial={'user': User.objects.get(username=request.user.username)})
-        else:
-            form = VarietyInventoryForm(initial={'user': User.objects.get(username=request.user.username), 'variety': Variety.objects.get(url=categ)})
+        form = VarietyInventoryForm(initial={'user': User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
+        
     return render(request, 'variety_inventory.html', {'form' : form, 'varieties' : varieties}, content_type='text/html')
+    
+def variety_inventory_add(request, categ):
+    try:
+        new_inventory = Catalog.objects.create(
+                user = User.objects.get(username=request.user.username),
+                variety = Variety.objects.get(url=categ),
+                qtt = 1,
+                shares_qtt = 1,
+            )
+        new_inventory.save()
+        return HttpResponseRedirect('/categories/'+Variety.objects.get(url=categ).category.url)
+    except:
+        return render(request, '404.html', content_type='text/html')
