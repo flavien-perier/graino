@@ -43,18 +43,26 @@
                 <th>Nom commun</th>
                 <th>Nom latin</th>
                 <th>Catégories</th>
+                <th>Ajouter</th>
             </tr>
             </thead>
             <tbody>
             
             {% for o in varieties %}
             <tr>
-                <td>{{ o.title }} <span class="hidden">{{ o.title|stripaccents }} </span></td>
+                <td>{{ o.title }} <span class="hidden">{{ o.title|stripaccents }}</span></td>
                 <td>{{ o.latin }}</td>
-                <td>{{ o.category.title }} <span class="hidden">{{ o.category.url }} </span></td>
+                <td>{{ o.category.title }} <span class="hidden">{{ o.category.url }}</span></td>
+                {% if o in inventory %}
+                    <td>J'ai cette variétée</td>
+                {% else %}
+                    <td><a href='/variety_inventory/add/{{ o.url }}'>J'ai cette variétée</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
             </tbody>
         </table>
+        
+       
     {% endif %}
 {% endblock %}

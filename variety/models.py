@@ -11,6 +11,7 @@ class Variety(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=250)
+    url = models.SlugField(max_length=250)
     latin = models.CharField(max_length=250, blank=True, null=True)
     category = TreeForeignKey('Category')
     is_stock = models.BooleanField(default=True)
