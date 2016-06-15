@@ -1,0 +1,46 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+    <table>
+        <tr>
+            <td>Nom d'utilisateur : </td>
+            <td>{{ user.username }}.</td>
+        </tr>
+        <tr>
+            <td>Nom : </td>
+            <td>{{ user.first_name }}.</td>
+        </tr>
+        <tr>
+            <td>Prénom : </td>
+            <td>{{ user.last_name }}.</td>
+        </tr>
+        <tr>
+            <td>e-mail : </td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td>Pays : </td>
+            <td>{{ profile.country }}</td>
+        </tr>
+        <tr>
+            <td>Ville : </td>
+            <td>{{ profile.city }}</td>
+        </tr>
+        <tr>
+            <td>Adrdesse : </td>
+            <td>{{ profile.address }}</td>
+        </tr>
+        <tr>
+            <td>Code postale : </td>
+            <td>{{ profile.zip_code }}</td>
+        </tr>
+        <tr>
+            <td>Position géographique : </td>
+            <td>{{ profile.lg }} / {{ profile.lt }}</td>
+        </tr>
+    </table>
+    <a href="/me/edit/">Modifier</a>
+{% endblock %}

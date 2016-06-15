@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+	<p>Bonjour, {{ user.username }}.</p>
+{% endblock %}

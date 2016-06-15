@@ -1,0 +1,12 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+    <form id="form" action="" method="POST">{% csrf_token %}
+        {{form1.as_p}}
+        {{form2.as_p}}
+        <input type="submit" value="valider"/>
+    </form>
+{% endblock %}

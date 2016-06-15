@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+
+    <h1>Ajouter une Variétée à votre liste</h1>
+
+    <form id="form" action="" method="POST">{% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="valider"/>
+    </form>
+
+    <h1>Liste de vos variétées</h1>
+
+    <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Variétée</th>
+            <th>Quantitée</th>
+            <th>Quantitée partageable</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        {% for o in varieties %}
+        <tr>
+            <td>{{ o.variety.title }}</td>
+            <td>{{ o.qtt }}</td>
+            <td>{{ o.shares_qtt }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+{% endblock %}

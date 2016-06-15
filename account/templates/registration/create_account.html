@@ -1,0 +1,13 @@
+﻿{% extends "index.html" %}
+{% load static %}
+
+{% block main %}
+	<h1>Création de compte</h1>
+    {% if message != "null" %}
+        <li>{{ message }}</li>
+    {% endif %}
+    <form action="" method="POST">{% csrf_token %}
+        {{ form.as_p }}
+		<input type="submit" id="valider" value="Connexion">
+	</form>
+{% endblock %}
