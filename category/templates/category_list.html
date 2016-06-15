@@ -4,7 +4,13 @@
 {% load filters %}
 
 {% block main %}
+    <form action="/categories/" method="POST">{% csrf_token %}
+        <input name='search' placeholder='Tapez votre recherche ici'/>
+        <input type="submit" value="Rechercher"/>
+    </form>
+
     <div class="cat_parents">
+    {% if tree == 1 %}
         {% if cat_parents != NULL %}
             <a href='{{STATIC_URL}}/categories/'>home</a>
         {% else %}
@@ -19,24 +25,39 @@
             >> {{ nom_page }}
 
         {% endif %}
-
+    {% endif %}
     </div>
-    
-    {% if categories != NULL %}
-        <ul class="root">
-            {% for o, structure in categories|tree_info %}
-                {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
-                    {% if o.illustration %}
-                        <img src="/{{ o.illustration }}" style="height:100px;"/>
-                    {% endif %}
-                    <a href="{{STATIC_URL}}/categories/{{ o.url }}">{{ o.title }}</a>
-                    <!--<a href="{\% url category_detail o.url %\}">{{ o.title }}</a>-->
-                {% for level in structure.closed_levels %}</li></ul>{% endfor %}
-            {% endfor %}
-        </ul>
+    {% if categories != "" %}
+        <h1>Catégories</h1>
+        {% if tree == 1 %}
+            <ul class="root">
+                {% for o, structure in categories|tree_info %}
+                    {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
+                        {% if o.illustration %}
+                            <img src="/{{ o.illustration }}" style="height:100px;"/>
+                        {% endif %}
+                        <a href="{{STATIC_URL}}/categories/{{ o.url }}">{{ o.title }}</a>
+                        <!--<a href="{\% url category_detail o.url %\}">{{ o.title }}</a>-->
+                    {% for level in structure.closed_levels %}</li></ul>{% endfor %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <ul>
+                {% for o, structure in categories|tree_info %}
+                        <li>
+                        {% if o.illustration %}
+                            <img src="/{{ o.illustration }}" style="height:100px;"/>
+                        {% endif %}
+                        <a href="{{STATIC_URL}}/categories/{{ o.url }}">{{ o.title }}</a>
+                        </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     {% endif %}
     
-    {% if varieties != NULL  %}
+    {% if varieties != "" %}
+        <h1>Variétées</h1>
+        <a href="{{STATIC_URL}}/add/varieties/{{ url_page }}">Ajouter une variétée</a>
         <table id="example" class="display" width="100%" cellspacing="0">
             <thead>
             <tr>
@@ -56,7 +77,7 @@
                 {% if o in inventory %}
                     <td>J'ai cette variétée</td>
                 {% else %}
-                    <td><a href='/variety_inventory/add/{{ o.url }}'>J'ai cette variétée</a></td>
+                    <td><a href='/add/varieties_inventory/{{ o.url }}'>J'ai cette variétée</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

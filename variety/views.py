@@ -34,7 +34,21 @@ def add_variety(request):
         form = AddVarietyForm()
         
     return render(request, 'add_variety.html', {'form' : form}, content_type='text/html')
-    
+
+def add_variety_details(request, categ):
+    try:
+        if request.method == "POST":
+            form = AddVarietyForm(request.POST, initial={'category': Variety.objects.get(url=categ).category})
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/')
+        else:
+            form = AddVarietyForm(initial={'category': Category.objects.get(url=categ)})
+            
+        return render(request, 'add_variety.html', {'form' : form}, content_type='text/html')
+    except:
+        return render(request, '404.html', content_type='text/html')
+
 def variety_inventory(request, categ=0):
     
     varieties = Catalog.objects.filter(user__username=request.user.username)

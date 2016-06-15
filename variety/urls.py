@@ -14,7 +14,8 @@ from account.views import *
 
 urlpatterns = [
     #url(r'^update/$', update, name='update'),
-    url(r'^add_variety/$', add_variety, name='add_variety'),
-    url(r'^variety_inventory/$', variety_inventory, name='variety_inventory'),
-    url(r'^variety_inventory/add/(?P<categ>[\w-]+)$', variety_inventory_add, name='variety_inventory_add'),
+    url(r'^add/varieties/$', add_variety, name='add_variety'),
+    url(r'^add/varieties/(?P<categ>[\w-]+)$', add_variety_details, name='add_variety_details'),
+    url(r'^varieties_inventory/$', variety_inventory, name='variety_inventory'),
+    url(r'^add/varieties_inventory/(?P<categ>[\w-]+)$', variety_inventory_add, name='variety_inventory_add'),
 ]

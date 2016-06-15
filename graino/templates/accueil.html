@@ -39,7 +39,12 @@
                     <img class="block" src="/{{ graines_potageres.illustration }}" alt="Grains" title="Grains"/>
                 </a>
             </div>
-
+            
+            <h1 class="aligncenter">Rechercher une categorie / variétée</h1>
+            <form class="aligncenter" action="/categories/" method="POST">{% csrf_token %}
+                <input name='search' placeholder='Tapez votre recherche ici'/>
+                <input type="submit" value="Rechercher"/>
+            </form>
             
             {% if request.user.is_authenticated %}
                 <h1 class="aligncenter">Votre position</h1>

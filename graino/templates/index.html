@@ -37,8 +37,8 @@
             {% if request.user.is_authenticated %}
                 <a href="{{STATIC_URL}}/logout/">Deconnexion</a>
                 <a href="{{STATIC_URL}}/me/">Informations utilisateur</a>
-                <a href="{{STATIC_URL}}/add_variety/">Ajouter variétée</a>
-                <a href="{{STATIC_URL}}/add_categor/y">Ajouter categorie</a>
+                <a href="{{STATIC_URL}}/add/varieties/">Ajouter variétée</a>
+                <a href="{{STATIC_URL}}/add/categories/">Ajouter categorie</a>
                 <a href="{{STATIC_URL}}/variety_inventory/">Inventaire</a>
             {% else %}
                 <a href="{{STATIC_URL}}/login/">Connexion</a>
