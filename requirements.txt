@@ -1,17 +1,18 @@
 Django==1.8.5
-Pillow==3.2.0
-argparse==1.2.1
 django-appconf==1.0.2
+-e git+https://github.com/yourlabs/django-autocomplete-light@a7ba616d10f8b880784ea03e539c53f80a915ad1#egg=django_autocomplete_light
 django-extensions==1.5.7
 django-mptt==0.7.4
 django-mptt-admin==0.3.0
 django-shell-plus==1.1.7
 django-social-auth==0.7.28
+funcsigs==1.0.2
 httplib2==0.9.2
 mock==2.0.0
 oauth2==1.9.0.post1
 pbr==1.10.0
+Pillow==3.2.0
+pygeocoder==1.2.5
 python-openid==2.2.5
 requests==2.10.0
 six==1.10.0
-wsgiref==0.1.2
