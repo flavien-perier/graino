@@ -11,7 +11,9 @@ from django.shortcuts import render_to_response
 
 from variety.models import *
 
-from .forms import AddVarietyForm, VarietyInventoryForm
+from .forms import AddVarietyForm, VarietyInventoryForm, VarietyRequestForm
+
+import time
 
 # Variety view
 
@@ -50,7 +52,6 @@ def add_variety_details(request, categ):
         return render(request, '404.html', content_type='text/html')
 
 def variety_inventory(request, categ=0):
-    
     varieties = Catalog.objects.filter(user__username=request.user.username)
     
     if request.method == "POST":
@@ -58,7 +59,7 @@ def variety_inventory(request, categ=0):
         form = VarietyInventoryForm(request.POST, initial={'user': User.objects.get(username=request.user.username)})
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/variety_inventory/')
+            return HttpResponseRedirect('/varieties_inventory/')
     else:
         form = VarietyInventoryForm(initial={'user': User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
         
@@ -73,6 +74,59 @@ def variety_inventory_add(request, categ):
                 shares_qtt = 1,
             )
         new_inventory.save()
-        return HttpResponseRedirect('/categories/'+Variety.objects.get(url=categ).category.url)
+
+        return HttpResponseRedirect(request.META["HTTP_REFERER"])
+    except:
+        return render(request, '404.html', content_type='text/html')
+
+def variety_inventory_delete_confirmation(request, categ):
+    return render(request, 'variety_inventory_delete.html', {"url":categ}, content_type='text/html')
+
+def variety_inventory_delete(request, categ):
+    try:
+        delete_inventory = Catalog.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url = categ)
+        delete_inventory.delete()
+
+        return HttpResponseRedirect("/varieties_inventory/")
+    except:
+        return render(request, '404.html', content_type='text/html')
+
+        
+def variety_request(request, categ=0):
+    varieties = Desire.objects.filter(user__username=request.user.username)
+    
+    if request.method == "POST":
+        print (request.POST["variety"])
+        form = VarietyRequestForm(request.POST, initial={'user': User.objects.get(username=request.user.username)})
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/varieties_request/')
+    else:
+        form = VarietyRequestForm(initial={'user': User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
+        
+    return render(request, 'variety_request.html', {'form' : form, 'varieties' : varieties}, content_type='text/html')
+    
+def variety_request_add(request, categ):
+    try:
+        new_request = Desire.objects.create(
+                user = User.objects.get(username=request.user.username),
+                variety = Variety.objects.get(url=categ),
+                qtt = 1,
+            )
+        new_request.save()
+        
+        return HttpResponseRedirect(request.META["HTTP_REFERER"])
+    except:
+        return render(request, '404.html', content_type='text/html')
+
+def variety_request_delete_confirmation(request, categ):
+    return render(request, 'variety_request_delete.html', {"url":categ}, content_type='text/html')
+        
+def variety_request_delete(request, categ):
+    try:
+        delete_request = Desire.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url = categ)
+        delete_request.delete()
+
+        return HttpResponseRedirect("/varieties_request/")
     except:
         return render(request, '404.html', content_type='text/html')

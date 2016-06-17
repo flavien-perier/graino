@@ -10,7 +10,7 @@ from variety.models import *
 class AddCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['title', 'parent', 'illustration', ]
+        fields = ['title', 'parent', 'illustration']
         labels = {
             'title':"Nom",
             'illustration':"Image",

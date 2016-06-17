@@ -1,4 +1,6 @@
-﻿from django.db import models
+﻿# -*- coding: utf-8 -*-
+
+from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.contrib.auth.models import User
 from django.utils.encoding import python_2_unicode_compatible
@@ -64,6 +66,9 @@ class Profile(models.Model):
     
     class Meta:
         verbose_name_plural = "profile"
+    
+    def get_varieties(self):
+        return Catalog.objects.filter(user__username=self.user.username)
 
 @python_2_unicode_compatible
 class Follow(models.Model):
@@ -109,7 +114,7 @@ class Desire(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     variety = models.ForeignKey(Variety, on_delete=models.CASCADE)
     qtt = models.IntegerField()
-    message = models.CharField(max_length=5000, unique=True)
+    message = models.CharField(max_length=5000, blank=True, null=True)
     
     def __str__ (self):
         return self.user.username+" "+self.variety

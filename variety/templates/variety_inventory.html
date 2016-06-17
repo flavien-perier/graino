@@ -12,7 +12,7 @@
         <input type="submit" value="valider"/>
     </form>
 
-    <h1>Liste de vos variétées</h1>
+    <h1>Liste de mes variétées</h1>
 
     <table id="example" class="display" width="100%" cellspacing="0">
         <thead>
@@ -20,6 +20,7 @@
             <th>Variétée</th>
             <th>Quantitée</th>
             <th>Quantitée partageable</th>
+            <th>Supprimer</th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
             <td>{{ o.variety.title }}</td>
             <td>{{ o.qtt }}</td>
             <td>{{ o.shares_qtt }}</td>
+            <td><a href='/delete/confirmation/varieties_inventory/{{ o.variety.url }}'>Supprimer</a></td>
         </tr>
         {% endfor %}
         </tbody>

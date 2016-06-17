@@ -41,7 +41,7 @@
             </div>
             
             <h1 class="aligncenter">Rechercher une categorie / variétée</h1>
-            <form class="aligncenter" action="/categories/" method="POST">{% csrf_token %}
+            <form class="aligncenter" action="/search/" method="GET">
                 <input name='search' placeholder='Tapez votre recherche ici'/>
                 <input type="submit" value="Rechercher"/>
             </form>

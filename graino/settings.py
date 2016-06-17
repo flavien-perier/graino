@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'shell_plus',
     'social_auth',
+    'autocomplete_light',
 )
 
 MIDDLEWARE_CLASSES = (

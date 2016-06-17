@@ -4,8 +4,9 @@
 {% load filters %}
 
 {% block main %}
-    <form action="/categories/" method="POST">{% csrf_token %}
-        <input name='search' placeholder='Tapez votre recherche ici'/>
+
+    <form action="/search/" method="GET">
+        <input name='search' placeholder='Tapez votre recherche ici' value='{{ search }}'/>
         <input type="submit" value="Rechercher"/>
     </form>
 
@@ -26,6 +27,8 @@
 
         {% endif %}
     {% endif %}
+
+    
     </div>
     {% if categories != "" %}
         <h1>Catégories</h1>
@@ -65,6 +68,7 @@
                 <th>Nom latin</th>
                 <th>Catégories</th>
                 <th>Ajouter</th>
+                <th>Demander</th>
             </tr>
             </thead>
             <tbody>
@@ -74,10 +78,21 @@
                 <td>{{ o.title }} <span class="hidden">{{ o.title|stripaccents }}</span></td>
                 <td>{{ o.latin }}</td>
                 <td>{{ o.category.title }} <span class="hidden">{{ o.category.url }}</span></td>
-                {% if o in inventory %}
-                    <td>J'ai cette variétée</td>
+                {% if request.user.is_authenticated %}
+                    {% if o in inventory %}
+                        <td>J'ai cette variétée</td>
+                    {% else %}
+                        <td><a href='/add/varieties_inventory/{{ o.url }}'>J'ai cette variétée</a></td>
+                    {% endif %}
+                    
+                    {% if o in demande %}
+                        <td>Je voudrais de cette variétée</td>
+                    {% else %}
+                        <td><a href='/add/varieties_request/{{ o.url }}'>Je voudrais de cette variétée</a></td>
+                    {% endif %}
                 {% else %}
-                    <td><a href='/add/varieties_inventory/{{ o.url }}'>J'ai cette variétée</a></td>
+                    <td><a href='/login/'>J'ai cette variétée</a></td>
+                    <td><a href='/login/'>Je voudrais de cette variétée</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

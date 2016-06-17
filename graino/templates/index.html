@@ -6,10 +6,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>Graino</title>
-        <link rel="stylesheet" type="text/css" media="screen" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-        <script src="{% static "js/tableaux.js" %}"></script>
         <link rel="stylesheet" href="{% static "css/rocssti-fr.css" %}"/>
         <link rel="stylesheet" href="{% static "css/style.css" %}"/>
         <!--[if IE]>
@@ -39,7 +36,8 @@
                 <a href="{{STATIC_URL}}/me/">Informations utilisateur</a>
                 <a href="{{STATIC_URL}}/add/varieties/">Ajouter variétée</a>
                 <a href="{{STATIC_URL}}/add/categories/">Ajouter categorie</a>
-                <a href="{{STATIC_URL}}/variety_inventory/">Inventaire</a>
+                <a href="{{STATIC_URL}}/varieties_inventory/">Inventaire</a>
+                <a href="{{STATIC_URL}}/varieties_request/">Demandes</a>
             {% else %}
                 <a href="{{STATIC_URL}}/login/">Connexion</a>
             {% endif %}

@@ -196,3 +196,32 @@ ul a
 {
     font-size:1.2em;
 }
+
+table
+{
+	border-collapse:collapse;
+    background-color:#9E9E9E;
+}
+
+table th, table td
+{
+    border:1px solid black;
+    padding:5px;
+}
+
+table th
+{
+	font-weight:bold;
+    background-color:#626262;
+	color:#FFFFFF;
+}
+
+table td
+{
+	color:#000000;
+}
+
+table tr:hover
+{
+    background-color:#BCBCBC;
+}

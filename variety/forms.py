@@ -33,7 +33,7 @@ class AddVarietyForm(forms.ModelForm):
                 category = cleaned_data['category'],
                 is_stock = cleaned_data['is_stock'],
             )
-        new_Category.save()
+        new_Category.save() 
         
 class VarietyInventoryForm(forms.ModelForm):
     class Meta:
@@ -54,4 +54,24 @@ class VarietyInventoryForm(forms.ModelForm):
             self.add_error("qtt", u"Vous devez avoir plus d'éléments en stock que ceux que vous mettez à disposition.")
         if Catalog.objects.filter(variety=cleaned_data['variety']).exists():
             self.add_error("variety", u"Vous possédez déjà de cette variétée.")
+        return cleaned_data
+
+class VarietyRequestForm(forms.ModelForm):
+    class Meta:
+        model = Desire
+        fields = ['user', 'variety', 'qtt', 'message']
+        labels = {
+            'variety':"Variétée",
+            'qtt':"Quantitée",
+            'message':"Message",
+        }
+        widgets = {
+            'user': forms.HiddenInput(),
+            'message': forms.Textarea,
+        }
+        
+    def clean(self):
+        cleaned_data = super(VarietyRequestForm, self).clean()
+        if Desire.objects.filter(variety=cleaned_data['variety']).exists():
+            self.add_error("variety", u"Vous demandez déjà de cette variétée.")
         return cleaned_data
