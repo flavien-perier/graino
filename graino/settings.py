@@ -34,6 +34,8 @@ sys.path.insert(0, '../../python-social-auth')
 # Application definition
 
 INSTALLED_APPS = (
+    'autocomplete_light',
+
     'graino',
     'variety',
     'category',
@@ -49,7 +51,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'shell_plus',
     'social_auth',
-    'autocomplete_light',
 )
 
 MIDDLEWARE_CLASSES = (

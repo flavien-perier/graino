@@ -2,13 +2,20 @@
 {% load static %}
 {% load mptt_tags %}
 {% load filters %}
+{% include 'autocomplete_light/static.html' %}
 
 {% block main %}
 
     <form action="/search/" method="GET">
-        <input name='search' placeholder='Tapez votre recherche ici' value='{{ search }}'/>
+        <input name='search' placeholder='Tapez votre recherche ici' value="{{search}}"/>
+        {{ form_search }}
         <input type="submit" value="Rechercher"/>
     </form>
+    
+    <link href="/static/collected/autocomplete_light/vendor/select2/dist/css/select2.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/collected/autocomplete_light/select2.css" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="/static/collected/autocomplete_light/autocomplete.init.js"></script>
+    <script type="text/javascript" src="/static/collected/autocomplete_light/select2.js"></script>
 
     <div class="cat_parents">
     {% if tree == 1 %}
