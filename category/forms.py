@@ -6,10 +6,7 @@ from django import forms
 from django.utils.text import slugify
 
 from variety.models import *
-
-from dal import autocomplete
-# import autocomplete_light
-    
+ 
 class AddCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
@@ -36,9 +33,3 @@ class AddCategoryForm(forms.ModelForm):
                 illustration = cleaned_data['illustration']
             )
         new_Category.save()
-
-# class SearchForm(autocomplete_light.AutocompleteModelBase):
-#     model = Variety 
-#     autocomplete_js_attributes = {
-#         'minimum_characters':0,
-#     }
