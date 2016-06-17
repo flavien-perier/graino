@@ -34,8 +34,8 @@ sys.path.insert(0, '../../python-social-auth')
 # Application definition
 
 INSTALLED_APPS = (
-    'autocomplete_light',
-
+    'dal',
+    'dal_select2',
     'graino',
     'variety',
     'category',
