@@ -1,0 +1,12 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+
+    <h1>Voulez vous vraiment supprimer cette variétée de vottre inventaire?</h1>
+    <a href='/delete/varieties_inventory/{{ url }}'>Oui</a><br/>
+    <a href='/varieties_inventory/'>Non</a>
+   
+{% endblock %}

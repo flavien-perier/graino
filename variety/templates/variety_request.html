@@ -1,0 +1,39 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+
+    <h1>Demander une variétée</h1>
+
+    <form id="form" action="" method="POST">{% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="valider"/>
+    </form>
+
+    <h1>Liste de mes demandes</h1>
+
+    <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Variétée</th>
+            <th>Quantitée</th>
+            <th>Message</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        {% for o in varieties %}
+        <tr>
+            <td>{{ o.variety.title }}</td>
+            <td>{{ o.qtt }}</td>
+            <td>{{ o.message }}</td>
+            <td><a href='/delete/confirmation/varieties_request/{{ o.variety.url }}'>Supprimer</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+{% endblock %}
