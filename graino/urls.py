@@ -12,15 +12,15 @@ from variety.views import *
 from category.views import *
 from account.views import *
 
-import autocomplete_light
-autocomplete_light.autodiscover()
-admin.autodiscover()
+# import autocomplete_light
+# autocomplete_light.autodiscover()
+# admin.autodiscover()
 
 # Graino urls
 
 
 urlpatterns = [
-    url(r'^autocomplete/', include('autocomplete_light.urls')),
+    # url(r'^autocomplete/', include('autocomplete_light.urls')),
     url('^', include('django.contrib.auth.urls')),
     url(r'^profile/$', TemplateView.as_view(template_name='profile.html'), name='user_profile'),
     
