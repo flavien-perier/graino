@@ -1,0 +1,32 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+{% include 'autocomplete_light/static.html' %}
+
+{% block main %}
+
+        <h1>utilisteurs</h1>
+        <table id="example" class="display" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>username</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>e-mail</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            {% for o in users %}
+            <tr>
+                <td>{{ o.username }}</td>
+                <td>{{ o.last_name }}</td>
+                <td>{{ o.first_name }}</td>
+                <td>{{ o.email }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        
+{% endblock %}
