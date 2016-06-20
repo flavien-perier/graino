@@ -38,6 +38,10 @@ class CreationUserForm(forms.Form):
                 email = cleaned_data['email']
             )
         new_user.save()
+        new_profile = Profile.objects.create(
+                user = User.objects.get(username=cleaned_data['username'])
+            )
+        new_profile.save()
         
 class EditionUserForm_user(forms.ModelForm):
 

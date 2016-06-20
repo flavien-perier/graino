@@ -80,15 +80,17 @@ def category_detail(request, categ):
         return render(request, '404.html', content_type='text/html')
 
 def add_category(request):
-    if request.method == "POST":
-        form = AddCategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
+    if request.user.is_authenticated():
+        if request.method == "POST":
+            form = AddCategoryForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/')
+        else:
+            form = AddCategoryForm()
+        return render(request, 'add_category.html', {'form' : form}, content_type='text/html')
     else:
-        form = AddCategoryForm()
-    
-    return render(request, 'add_category.html', {'form' : form}, content_type='text/html')
+        return render(request, '403.html', content_type='text/html')
 
 
 class VarietyResultJson(autocomplete.Select2QuerySetView):

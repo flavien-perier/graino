@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^create_account/$', create_account, name='create_account'),
     url(r'^me/$', me, name='me'),
     url(r'^me/edit/$', me_edit, name='me_edit'),
+    url(r'^user_list/$', user_list, name='user_list'),
 ]

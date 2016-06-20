@@ -6,23 +6,10 @@
 
 {% block main %}
 
-    <link href="{% static 'autocomplete/select2.css' %}" type="text/css" media="all" rel="stylesheet" />
-    <script type="{% static 'autocomplete/jquery.init.js' %}"></script>
-    <script type="{% static 'autocomplete/autocomplete.init.js' %}"></script>
-    <script type="{% static 'autocomplete/select2.js' %}"></script>
-    
-    <script>
-        $(document).ready(function() {
-            // Bind on continent field change
-            $(':input[name$=continent]').on('change', function() {
-                // Get the field prefix, ie. if this comes from a formset form
-                var prefix = $(this).getFormPrefix();
-
-                // Clear the autocomplete with the same prefix
-                $(':input[name=' + prefix + 'birth_country]').val(null).trigger('change');
-            });
-        });
-    </script>
+    <link href="/static/collected/autocomplete_light/vendor/select2/dist/css/select2.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="/static/collected/autocomplete_light/select2.css" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="/static/collected/autocomplete_light/autocomplete.init.js"></script>
+    <script type="text/javascript" src="/static/collected/autocomplete_light/select2.js"></script>
     
     <form action="/search/" method="GET">
         <input name='search' placeholder='Tapez votre recherche ici' value="{{search}}"/>
