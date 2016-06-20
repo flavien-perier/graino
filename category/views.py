@@ -10,13 +10,11 @@ from django.db.models import Q
 from django.http import HttpResponse 
 from django.shortcuts import render_to_response
 
-
 from dal import autocomplete
-
 
 from variety.models import *
 
-from .forms import AddCategoryForm
+from .forms import AddCategoryForm, SearchForm
 
 import unicodedata
 
@@ -26,7 +24,8 @@ import unicodedata
 def category_list_view(request):
     categories = Category.objects.all()
     varieties = ""
-    return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'tree':1, 'form_search':"form_search"}, content_type='text/html')
+    form_search = SearchForm
+    return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'tree':1, 'form_search':form_search}, content_type='text/html')
     
 def search(request):
     if request.method == "GET" and request.GET["search"]:

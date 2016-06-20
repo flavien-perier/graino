@@ -6,6 +6,8 @@ from django import forms
 from django.utils.text import slugify
 
 from variety.models import *
+
+from dal import autocomplete
  
 class AddCategoryForm(forms.ModelForm):
     class Meta:
@@ -33,3 +35,13 @@ class AddCategoryForm(forms.ModelForm):
                 illustration = cleaned_data['illustration']
             )
         new_Category.save()
+
+class SearchForm(forms.ModelForm):
+    search = forms.ModelChoiceField(
+        queryset=Variety.objects.all(),
+        widget=autocomplete.ModelSelect2(url='variety-result-json')
+    )
+
+    class Meta:
+        model = Variety
+        fields = []
