@@ -1,0 +1,15 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+
+    <h1>Modifier "{{ title }}" de votre inventaire</h1>
+
+    <form id="form" action="" method="POST">{% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="valider"/>
+    </form>
+   
+{% endblock %}

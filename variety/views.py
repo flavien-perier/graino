@@ -11,7 +11,7 @@ from django.shortcuts import render_to_response
 
 from variety.models import *
 
-from .forms import AddVarietyForm, VarietyInventoryForm, VarietyRequestForm
+from .forms import AddVarietyForm, VarietyInventoryForm, VarietyInventoryUpdateForm, VarietyRequestForm, VarietyRequestUpdateForm
 
 import time
 
@@ -81,7 +81,7 @@ def variety_inventory_add(request, categ):
 
 def variety_inventory_delete_confirmation(request, categ):
     return render(request, 'variety_inventory_delete.html', {"url":categ}, content_type='text/html')
-
+    
 def variety_inventory_delete(request, categ):
     try:
         delete_inventory = Catalog.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url = categ)
@@ -91,7 +91,22 @@ def variety_inventory_delete(request, categ):
     except:
         return render(request, '404.html', content_type='text/html')
 
+def variety_inventory_update(request, categ):
+    try:
+        variet = Catalog.objects.filter(user__username=request.user.username).get(variety__url=categ)
         
+        if request.method == "POST":
+            form = VarietyInventoryUpdateForm(data=request.POST, instance=variet)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/varieties_inventory/')
+        else:        
+            form = VarietyInventoryUpdateForm(instance=variet)
+            
+        return render(request, 'variety_inventory_update.html', {'form':form, 'title':variet.variety.title}, content_type='text/html')
+    except:
+        return render(request, '404.html', content_type='text/html')
+    
 def variety_request(request, categ=0):
     varieties = Desire.objects.filter(user__username=request.user.username)
     
@@ -128,5 +143,21 @@ def variety_request_delete(request, categ):
         delete_request.delete()
 
         return HttpResponseRedirect("/varieties_request/")
+    except:
+        return render(request, '404.html', content_type='text/html')
+
+def variety_request_update(request, categ):
+    try:
+        variet = Desire.objects.filter(user__username=request.user.username).get(variety__url=categ)
+        
+        if request.method == "POST":
+            form = VarietyRequestUpdateForm(data=request.POST, instance=variet)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/varieties_request/')
+        else:        
+            form = VarietyRequestUpdateForm(instance=variet)
+            
+        return render(request, 'variety_request_update.html', {'form' : form, 'title':variet.variety.title}, content_type='text/html')
     except:
         return render(request, '404.html', content_type='text/html')
