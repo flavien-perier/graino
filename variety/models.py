@@ -70,6 +70,23 @@ class Profile(models.Model):
     def get_varieties(self):
         return Catalog.objects.filter(user__username=self.user.username)
 
+
+@python_2_unicode_compatible
+class Group(models.Model):
+    title = models.CharField(max_length=250, unique=True)
+    country = models.CharField(max_length=250, blank=True, null=True)
+    city = models.CharField(max_length=250, blank=True, null=True)
+    address = models.CharField(max_length=250, blank=True, null=True)
+    zip_code = models.CharField(max_length=15, blank=True, null=True)
+    lg = models.DecimalField(decimal_places=10, max_digits=20, blank=True, null=True)
+    lt = models.DecimalField(decimal_places=10, max_digits=20, blank=True, null=True)
+    
+    def __str__ (self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "categories"
+        
 @python_2_unicode_compatible
 class Follow(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='one')
@@ -83,20 +100,6 @@ class Follow(models.Model):
         verbose_name_plural = "follow"
 
 @python_2_unicode_compatible
-class Group(models.Model):
-    title = models.CharField(max_length=250, unique=True)
-    country = models.CharField(max_length=250, blank=True, null=True)
-    city = models.CharField(max_length=250, blank=True, null=True)
-    adress = models.CharField(max_length=250, blank=True, null=True)
-    zip_code = models.CharField(max_length=15, blank=True, null=True)
-    
-    def __str__ (self):
-        return self.name+" "+self.first_name
-
-    class Meta:
-        verbose_name_plural = "categories"
-
-@python_2_unicode_compatible
 class User_group(models.Model):
     #Passer par un belong
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -104,7 +107,7 @@ class User_group(models.Model):
     rank = models.IntegerField()
     
     def __str__ (self):
-        return self.user.username+" "+self.group
+        return self.user.username+" "+self.group.title
 
     class Meta:
         verbose_name_plural = "user_group"

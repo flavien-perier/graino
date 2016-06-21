@@ -18,7 +18,7 @@ header #logo
 	background-color:#E2E2E2;
 	border-radius:1em;
 	height:7em;
-    width:19em;
+    width:25em;
     float:left;
     margin-left:0em;
 	position: relative;
@@ -37,7 +37,7 @@ header #logo h1
 	font-family:"Arial";
     color:#7C0000;
     font-size:2.3em;
-	left:45%;
+	left:35%;
     transform: translateY(-50%); 
     top:0%;
     position: absolute;
@@ -90,7 +90,7 @@ header .slogan
     font-size:1.4em;
 }
 
-@media screen and (max-width:78em)
+@media screen and (max-width:87em)
 {
     header #logo
 	{

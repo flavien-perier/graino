@@ -1,0 +1,36 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+{% include 'autocomplete_light/static.html' %}
+
+{% block main %}
+
+        <h1>Grainotèques</h1>
+        <table id="example" class="display" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>E-mail</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            {% for o in users %}
+            <tr>
+                <td>{{ o.user.username }}</td>
+                <td>{{ o.user.last_name }}</td>
+                <td>{{ o.user.first_name }}</td>
+                <td>{{ o.user.email }}</td>
+                <td><a href="delete/confirmation/group/user?id={{ o.user.pk }}">Supprimer</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if rank >= 2 %}
+            <a href="/group/add/user/?id={{url}}">Ajouter un utilisateur</a>
+        {% endif %}
+{% endblock %}

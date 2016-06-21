@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'variety',
     'category',
     'account',
+    'group',
     'mptt',
     'django_mptt_admin',
     'django.contrib.admin',

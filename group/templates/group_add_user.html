@@ -1,0 +1,15 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+{% include 'autocomplete_light/static.html' %}
+
+{% block main %}
+    <h1>Ajouter une personne au group : </h1>
+    {{ message }}
+    <form action="" method="POST">{% csrf_token %}
+        Nom de l'utilisateur à ajouter : 
+        <input name="user"/>
+        <input type="submit" value="Ajouter"/>
+    </form>
+{% endblock %}

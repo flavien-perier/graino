@@ -8,6 +8,7 @@ from graino.views import *
 from variety.views import *
 from category.views import *
 from account.views import *
+from group.views import *
 
 # Variety urls
 

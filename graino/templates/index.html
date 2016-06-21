@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Graino</title>
+        <title>Grainothèque</title>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js" type="text/javascript"></script>
@@ -24,7 +24,7 @@
             <a href="/" title="Accueil">
                 <div id="logo">
                     <img src="{% static "img/logo.png" %}" alt="Logo du site." title="Logo"/>
-                    <h1>Graino</h1>
+                    <h1>Grainothèque</h1>
                 </div>
             </a>
             <nav>
@@ -45,6 +45,8 @@
                 <a href="{{STATIC_URL}}/varieties_inventory/">Inventaire</a>
                 <a href="{{STATIC_URL}}/varieties_request/">Demandes</a>
                 <a href="{{STATIC_URL}}/user_list/">User liste</a>
+                <a href="{{STATIC_URL}}/group/create/">Création de group</a>
+                <a href="{{STATIC_URL}}/group/list/">liste des groups</a>
             {% else %}
                 <a href="{{STATIC_URL}}/login/">Connexion</a>
             {% endif %}

@@ -1,0 +1,38 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+{% include 'autocomplete_light/static.html' %}
+
+{% block main %}
+
+        <h1>Grainotèques</h1>
+        <table id="example" class="display" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Pays</th>
+                <th>Ville</th>
+                <th>Modifier</th>
+                <th>Utilisateurs</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            {% for o in groups %}
+            <tr>
+                <td>{{ o.title }}</td>
+                <td>{{ o.country }}</td>
+                <td>{{ o.city }}</td>
+                {% if o in user_group %}
+                    <td><a href="/group/edit/?id={{ o.pk }}">Modifier</a></td>
+                {% else %}
+                    <td>Modifier</td>
+                {% endif %}
+                <td><a href="/group/user/list/?id={{ o.pk }}">Afficher</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="/group/create/">Créer un group</a>
+{% endblock %}

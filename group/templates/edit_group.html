@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block main %}
+	<h1>Modifications de group</h1>
+    <form action="" method="POST">{% csrf_token %}
+        {{ form.as_p }}
+		<input type="submit" value="Modifier">
+	</form>
+    <a href="/delete/confirmation/group/?id={{ request.GET.id }}">Supprimer le group</a>
+{% endblock %}
