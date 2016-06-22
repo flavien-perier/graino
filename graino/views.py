@@ -16,6 +16,15 @@ from variety.models import *
 
 def index(request):
     categ = Category.objects
+    pos = {}
+    
+    try:
+        user=Profile.objects.get(user__username=request.user.username)
+        pos['lat']=str(user.lt).replace(",",".")
+        pos['lng']=str(user.lg).replace(",",".")
+    except:
+        pos['lat'] ='45.77411'
+        pos['lng'] ='1.714179'
     
     return render(request, 'accueil.html', {
         'aromatiques': categ.get(url='aromatiques'),
@@ -23,7 +32,8 @@ def index(request):
         'fruitiers': categ.get(url='fruitiers'),
         'legumes_racines': categ.get(url='legumes-racines'),
         'medicinales': categ.get(url='medicinales'),
-        'graines_potageres': categ.get(url='graines-potageres')
+        'graines_potageres': categ.get(url='graines-potageres'),
+        'pos':pos
     }, content_type='text/html')
 
 def aide(request):
