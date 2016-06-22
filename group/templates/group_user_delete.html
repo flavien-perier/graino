@@ -6,7 +6,7 @@
 {% block main %}
 
     <h1>Voulez vous vraiment supprimer cette utilisateur de ce group?</h1>
-    <a href='/delete/group/?id={{ url }}'>Oui</a><br/>
+    <a href='/delete/group/user/?group={{ group }}&user={{ user }}'>Oui</a><br/>
     <a href='/group/list/'>Non</a>
    
 {% endblock %}

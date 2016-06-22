@@ -29,6 +29,26 @@ def category_list_view(request):
     
 def search(request):
     if request.method == "GET" and request.GET["search"]:
+        if request.user.username:
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            
+            if group=="user":
+                varieties_ids = Catalog.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
+                inventory = Variety.objects.filter(pk__in=varieties_ids)
+                varieties_ids = Desire.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
+                demande = Variety.objects.filter(pk__in=varieties_ids)
+            else:
+                varieties_ids = Catalog_group.objects.filter(group=Group.objects.get(pk=group)).values_list('variety', flat=True)
+                inventory = Variety.objects.filter(pk__in=varieties_ids)
+                varieties_ids = Desire_group.objects.filter(group=Group.objects.get(pk=group)).values_list('variety', flat=True)
+                demande = Variety.objects.filter(pk__in=varieties_ids)
+        else:
+            inventory = 0
+            demande = 0
+    
         recherche = request.GET["search"]
         recherche =  unicodedata.normalize('NFD', recherche).encode('ascii', 'ignore')     
         search = recherche.split(" ")
@@ -45,7 +65,7 @@ def search(request):
         categories = Category.objects.filter(req_categ)
         varieties = Variety.objects.filter(req_variet)
         
-        return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'tree':0, 'search':request.GET["search"]}, content_type='text/html')
+        return render(request, 'category_list.html', {'categories': categories, 'varieties': varieties, 'tree':0, 'search':request.GET["search"], 'inventory':inventory, 'demande':demande}, content_type='text/html')
         
     else:
         return render(request, '404.html', content_type='text/html')
@@ -54,10 +74,21 @@ def category_detail(request, categ):
     try:
         category = Category.objects.get(url=categ)
         if request.user.username:
-            varieties_ids = Catalog.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
-            inventory = Variety.objects.filter(pk__in=varieties_ids)
-            varieties_ids = Desire.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
-            demande = Variety.objects.filter(pk__in=varieties_ids)
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            
+            if group=="user":
+                varieties_ids = Catalog.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
+                inventory = Variety.objects.filter(pk__in=varieties_ids)
+                varieties_ids = Desire.objects.filter(user=User.objects.get(username=request.user.username)).values_list('variety', flat=True)
+                demande = Variety.objects.filter(pk__in=varieties_ids)
+            else:
+                varieties_ids = Catalog_group.objects.filter(group=Group.objects.get(pk=group)).values_list('variety', flat=True)
+                inventory = Variety.objects.filter(pk__in=varieties_ids)
+                varieties_ids = Desire_group.objects.filter(group=Group.objects.get(pk=group)).values_list('variety', flat=True)
+                demande = Variety.objects.filter(pk__in=varieties_ids)
         else:
             inventory = 0
             demande = 0

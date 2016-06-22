@@ -25,12 +25,12 @@
                 <td>{{ o.user.last_name }}</td>
                 <td>{{ o.user.first_name }}</td>
                 <td>{{ o.user.email }}</td>
-                <td><a href="delete/confirmation/group/user?id={{ o.user.pk }}">Supprimer</a></td>
+                <td><a href="/delete/confirmation/group/user/?group={{ url }}&user={{ o.user.pk }}">Supprimer</a></td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
         {% if rank >= 2 %}
-            <a href="/group/add/user/?id={{url}}">Ajouter un utilisateur</a>
+            <a href="/group/add/user/?id={{ url }}">Ajouter un utilisateur</a>
         {% endif %}
 {% endblock %}

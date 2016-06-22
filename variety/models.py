@@ -86,18 +86,6 @@ class Group(models.Model):
 
     class Meta:
         verbose_name_plural = "categories"
-        
-@python_2_unicode_compatible
-class Follow(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='one')
-    friend = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to')
-    created_at = models.DateTimeField(auto_now_add=True)
-    
-    def __str__ (self):
-        return self.user.username+" "+self.friend
-    
-    class Meta:
-        verbose_name_plural = "follow"
 
 @python_2_unicode_compatible
 class User_group(models.Model):
@@ -111,6 +99,18 @@ class User_group(models.Model):
 
     class Meta:
         verbose_name_plural = "user_group"
+        
+@python_2_unicode_compatible
+class Follow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='one')
+    friend = models.ForeignKey(User, on_delete=models.CASCADE, related_name='to')
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__ (self):
+        return self.user.username+" "+self.friend
+    
+    class Meta:
+        verbose_name_plural = "follow"
 
 @python_2_unicode_compatible
 class Desire(models.Model):
@@ -143,7 +143,7 @@ class Desire_group(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     variety = models.ForeignKey(Variety, on_delete=models.CASCADE)
     qtt = models.IntegerField()
-    message = models.CharField(max_length=5000)
+    message = models.CharField(max_length=5000, blank=True, null=True)
     
     def __str__ (self):
         return self.group+" "+self.variety

@@ -11,7 +11,7 @@ from django.shortcuts import render_to_response
 
 from variety.models import *
 
-from .forms import AddVarietyForm, VarietyInventoryForm, VarietyInventoryUpdateForm, VarietyRequestForm, VarietyRequestUpdateForm
+from .forms import AddVarietyForm, VarietyInventoryForm, VarietyInventoryForm_group, VarietyInventoryUpdateForm, VarietyInventoryUpdateForm_group, VarietyRequestForm, VarietyRequestForm_group, VarietyRequestUpdateForm, VarietyRequestUpdateForm_group
 
 import time
 
@@ -59,16 +59,29 @@ def add_variety_details(request, categ):
 
 def variety_inventory(request, categ=0):
     if request.user.is_authenticated():
-        varieties = Catalog.objects.filter(user__username=request.user.username)
+        try:
+            group = request.session["group"]
+        except:
+            group = "user"
+        
+        if group == "user":
+            varieties = Catalog.objects.filter(user__username=request.user.username)
+        else:
+            varieties = Catalog_group.objects.filter(group=group)
         
         if request.method == "POST":
-            print (request.POST["variety"])
-            form = VarietyInventoryForm(request.POST, initial={'user': User.objects.get(username=request.user.username)})
+            if group == "user":
+                form = VarietyInventoryForm(request.POST, initial={'user':User.objects.get(username=request.user.username)})
+            else:
+                form = VarietyInventoryForm_group(request.POST, initial={'group':group})
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/varieties_inventory/')
         else:
-            form = VarietyInventoryForm(initial={'user': User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
+            if group == "user":
+                form = VarietyInventoryForm(initial={'user':User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
+            else:
+                form = VarietyInventoryForm_group(initial={'group':group, 'qtt':'1', 'shares_qtt':1})
             
         return render(request, 'variety_inventory.html', {'form' : form, 'varieties' : varieties}, content_type='text/html')
     else:
@@ -77,12 +90,25 @@ def variety_inventory(request, categ=0):
 def variety_inventory_add(request, categ):
     if request.user.is_authenticated():
         try:
-            new_inventory = Catalog.objects.create(
-                    user = User.objects.get(username=request.user.username),
-                    variety = Variety.objects.get(url=categ),
-                    qtt = 1,
-                    shares_qtt = 1,
-                )
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            
+            if group == "user":
+                new_inventory = Catalog.objects.create(
+                        user = User.objects.get(username=request.user.username),
+                        variety = Variety.objects.get(url=categ),
+                        qtt = 1,
+                        shares_qtt = 1,
+                    )
+            else:
+                new_inventory = Catalog_group.objects.create(
+                        group = Group.objects.get(pk=group),
+                        variety = Variety.objects.get(url=categ),
+                        qtt = 1,
+                        shares_qtt = 1,
+                    )
             new_inventory.save()
 
             return HttpResponseRedirect(request.META["HTTP_REFERER"])
@@ -100,7 +126,14 @@ def variety_inventory_delete_confirmation(request, categ):
 def variety_inventory_delete(request, categ):
     if request.user.is_authenticated():
         try:
-            delete_inventory = Catalog.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url = categ)
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            if group=="user":
+                delete_inventory = Catalog.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url=categ)
+            else:
+                delete_inventory = Catalog_group.objects.filter(group=group).filter(variety__url=categ)
             delete_inventory.delete()
 
             return HttpResponseRedirect("/varieties_inventory/")
@@ -112,15 +145,30 @@ def variety_inventory_delete(request, categ):
 def variety_inventory_update(request, categ):
     if request.user.is_authenticated():
         try:
-            variet = Catalog.objects.filter(user__username=request.user.username).get(variety__url=categ)
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            
+            if group == "user":
+                variet = Catalog.objects.filter(user__username=request.user.username).get(variety__url=categ)
+            else:
+                variet = Catalog_group.objects.filter(group=group).get(variety__url=categ)
             
             if request.method == "POST":
-                form = VarietyInventoryUpdateForm(data=request.POST, instance=variet)
+                if group == "user":
+                    form = VarietyInventoryUpdateForm(data=request.POST, instance=variet)
+                else:
+                    form = VarietyInventoryUpdateForm_group(data=request.POST, instance=variet)
+                
                 if form.is_valid():
                     form.save()
                     return HttpResponseRedirect('/varieties_inventory/')
-            else:        
-                form = VarietyInventoryUpdateForm(instance=variet)
+            else:
+                if group == "user":
+                    form = VarietyInventoryUpdateForm(instance=variet)
+                else:
+                    form = VarietyInventoryUpdateForm_group(instance=variet)
                 
             return render(request, 'variety_inventory_update.html', {'form':form, 'title':variet.variety.title}, content_type='text/html')
         except:
@@ -130,16 +178,29 @@ def variety_inventory_update(request, categ):
     
 def variety_request(request, categ=0):
     if request.user.is_authenticated():
-        varieties = Desire.objects.filter(user__username=request.user.username)
+        try:
+            group = request.session["group"]
+        except:
+            group = "user"
         
+        if group == "user":
+            varieties = Desire.objects.filter(user__username=request.user.username)
+        else:
+            varieties = Desire_group.objects.filter(group=group)
+
         if request.method == "POST":
-            print (request.POST["variety"])
-            form = VarietyRequestForm(request.POST, initial={'user': User.objects.get(username=request.user.username)})
+            if group == "user":
+                form = VarietyRequestForm(request.POST, initial={'user':User.objects.get(username=request.user.username)})
+            else:
+                form = VarietyRequestForm_group(request.POST, initial={'group':group})
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect('/varieties_request/')
         else:
-            form = VarietyRequestForm(initial={'user': User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
+            if group == "user":
+                form = VarietyRequestForm(initial={'user':User.objects.get(username=request.user.username), 'qtt':'1', 'shares_qtt':1})
+            else:
+                form = VarietyRequestForm_group(initial={'group':group, 'qtt':'1', 'shares_qtt':1})
             
         return render(request, 'variety_request.html', {'form' : form, 'varieties' : varieties}, content_type='text/html')
     else:
@@ -148,11 +209,23 @@ def variety_request(request, categ=0):
 def variety_request_add(request, categ):
     if request.user.is_authenticated():
         try:
-            new_request = Desire.objects.create(
-                    user = User.objects.get(username=request.user.username),
-                    variety = Variety.objects.get(url=categ),
-                    qtt = 1,
-                )
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            
+            if group == "user":
+                new_request = Desire.objects.create(
+                        user = User.objects.get(username=request.user.username),
+                        variety = Variety.objects.get(url=categ),
+                        qtt = 1,
+                    )
+            else:
+                new_request = Desire_group.objects.create(
+                        group = Group.objects.get(pk=group),
+                        variety = Variety.objects.get(url=categ),
+                        qtt = 1,
+                    )
             new_request.save()
             
             return HttpResponseRedirect(request.META["HTTP_REFERER"])
@@ -170,7 +243,14 @@ def variety_request_delete_confirmation(request, categ):
 def variety_request_delete(request, categ):
     if request.user.is_authenticated():
         try:
-            delete_request = Desire.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url = categ)
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            if group=="user":
+                delete_request = Desire.objects.filter(user = User.objects.get(username=request.user.username)).filter(variety__url=categ)
+            else:
+                delete_request = Desire_group.objects.filter(group=group).filter(variety__url=categ)
             delete_request.delete()
 
             return HttpResponseRedirect("/varieties_request/")
@@ -182,15 +262,29 @@ def variety_request_delete(request, categ):
 def variety_request_update(request, categ):
     if request.user.is_authenticated():
         try:
-            variet = Desire.objects.filter(user__username=request.user.username).get(variety__url=categ)
+            try:
+                group = request.session["group"]
+            except:
+                group = "user"
+            
+            if group == "user":
+                variet = Desire.objects.filter(user__username=request.user.username).get(variety__url=categ)
+            else:
+                variet = Desire_group.objects.filter(group=group).get(variety__url=categ)
             
             if request.method == "POST":
-                form = VarietyRequestUpdateForm(data=request.POST, instance=variet)
+                if group == "user":
+                    form = VarietyRequestUpdateForm(data=request.POST, instance=variet)
+                else:
+                    form = VarietyRequestUpdateForm_group(data=request.POST, instance=variet)
                 if form.is_valid():
                     form.save()
                     return HttpResponseRedirect('/varieties_request/')
-            else:        
-                form = VarietyRequestUpdateForm(instance=variet)
+            else:
+                if group == "user":
+                    form = VarietyRequestUpdateForm(instance=variet)
+                else:
+                    form = VarietyRequestUpdateForm_group(instance=variet)
                 
             return render(request, 'variety_request_update.html', {'form' : form, 'title':variet.variety.title}, content_type='text/html')
         except:

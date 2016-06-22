@@ -52,23 +52,19 @@
             {% if request.user.is_authenticated %}
                 <h1 class="aligncenter">Votre position</h1>
                 <script>
-                    function initMap() {
-                      var myLatLng = {lat: {{ request.user.lt }}, lng: {{ request.user.lg }}};
-
-                      // Create a map object and specify the DOM element for display.
-                      var map = new google.maps.Map(document.getElementById('map'), {
-                        center: myLatLng,
-                        scrollwheel: false,
-                        zoom: 4
-                      });
-
-                      // Create a marker and set its position.
-                      var marker = new google.maps.Marker({
-                        map: map,
-                        position: myLatLng,
-                        title: 'Votre position'
-                      });
-                    }
+                    GMaps.geocode({
+                      address: $('#address').val(),
+                      callback: function(results, status) {
+                        if (status == 'OK') {
+                          var latlng = results[0].geometry.location;
+                          map.setCenter(latlng.lat(), latlng.lng());
+                          map.addMarker({
+                            lat: latlng.lat(),
+                            lng: latlng.lng()
+                          });
+                        }
+                      }
+                    });
                 </script>
             {% else %}
                 <h1 class="aligncenter">Les grainotèques</h1>

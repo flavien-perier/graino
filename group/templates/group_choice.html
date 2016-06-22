@@ -1,0 +1,19 @@
+﻿{% extends "index.html" %}
+{% load static %}
+
+{% block main %}
+    <h1>Comment souhaitez vous être identifier ?</h1>
+    <form method='POST'>{% csrf_token %}
+        <select name='group'>
+            <option value='user'>{{request.user.username}}</option>
+            {% for o in groups %}
+                {% if actu == o.group.pk|slugify %}
+                    <option value='{{o.group.pk}}' selected>group : {{o.group.title}}</option>
+                {% else %}
+                    <option value='{{o.group.pk}}'>group : {{o.group.title}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="valider"/>
+    </form>
+{% endblock %}

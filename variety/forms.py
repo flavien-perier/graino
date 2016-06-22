@@ -54,6 +54,27 @@ class VarietyInventoryForm(forms.ModelForm):
         if Catalog.objects.filter(variety=cleaned_data['variety']).exists():
             self.add_error("variety", u"Vous possédez déjà de cette variétée.")
         return cleaned_data
+
+class VarietyInventoryForm_group(forms.ModelForm):
+    class Meta:
+        model = Catalog_group
+        fields = ['group', 'variety', 'qtt', 'shares_qtt']
+        labels = {
+            'variety':"Variétée",
+            'qtt':"Quantitée",
+            'shares_qtt':"Quantitée partageable",
+        }
+        widgets = {
+            'group': forms.HiddenInput(),
+        }
+        
+    def clean(self):
+        cleaned_data = super(VarietyInventoryForm_group, self).clean()
+        if cleaned_data['qtt'] < cleaned_data['shares_qtt']:
+            self.add_error("qtt", u"Vous devez avoir plus d'éléments en stock que ceux que vous mettez à disposition.")
+        if Catalog.objects.filter(variety=cleaned_data['variety']).exists():
+            self.add_error("variety", u"Vous possédez déjà de cette variétée.")
+        return cleaned_data
         
 class VarietyInventoryUpdateForm(forms.ModelForm):
     class Meta:
@@ -73,7 +94,26 @@ class VarietyInventoryUpdateForm(forms.ModelForm):
         if cleaned_data['qtt'] < cleaned_data['shares_qtt']:
             self.add_error("qtt", u"Vous devez avoir plus d'éléments en stock que ceux que vous mettez à disposition.")
         return cleaned_data
+
+class VarietyInventoryUpdateForm_group(forms.ModelForm):
+    class Meta:
+        model = Catalog_group
+        fields = ['group', 'qtt', 'shares_qtt']
+        labels = {
+            'variety':"Variétée",
+            'qtt':"Quantitée",
+            'shares_qtt':"Quantitée partageable",
+        }
+        widgets = {
+            'group': forms.HiddenInput(),
+        }
         
+    def clean(self):
+        cleaned_data = super(VarietyInventoryUpdateForm_group, self).clean()
+        if cleaned_data['qtt'] < cleaned_data['shares_qtt']:
+            self.add_error("qtt", u"Vous devez avoir plus d'éléments en stock que ceux que vous mettez à disposition.")
+        return cleaned_data
+
 class VarietyRequestForm(forms.ModelForm):
     class Meta:
         model = Desire
@@ -94,6 +134,26 @@ class VarietyRequestForm(forms.ModelForm):
             self.add_error("variety", u"Vous demandez déjà de cette variétée.")
         return cleaned_data
 
+class VarietyRequestForm_group(forms.ModelForm):
+    class Meta:
+        model = Desire_group
+        fields = ['group', 'variety', 'qtt', 'message']
+        labels = {
+            'variety':"Variétée",
+            'qtt':"Quantitée",
+            'message':"Message",
+        }
+        widgets = {
+            'group': forms.HiddenInput(),
+            'message': forms.Textarea,
+        }
+        
+    def clean(self):
+        cleaned_data = super(VarietyRequestForm_group, self).clean()
+        if Desire.objects.filter(variety=cleaned_data['variety']).exists():
+            self.add_error("variety", u"Vous demandez déjà de cette variétée.")
+        return cleaned_data
+
 class VarietyRequestUpdateForm(forms.ModelForm):
     class Meta:
         model = Desire
@@ -105,5 +165,19 @@ class VarietyRequestUpdateForm(forms.ModelForm):
         }
         widgets = {
             'user': forms.HiddenInput(),
+            'message': forms.Textarea,
+        }
+
+class VarietyRequestUpdateForm_group(forms.ModelForm):
+    class Meta:
+        model = Desire_group
+        fields = ['group', 'qtt', 'message']
+        labels = {
+            'variety':"Variétée",
+            'qtt':"Quantitée",
+            'message':"Message",
+        }
+        widgets = {
+            'group': forms.HiddenInput(),
             'message': forms.Textarea,
         }

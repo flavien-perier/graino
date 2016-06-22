@@ -58,7 +58,7 @@ def group_edit(request):
 def group_list(request):
     if request.user.is_authenticated():
         groups = Group.objects.all()
-        user_group = Group.objects.filter(pk__in=User_group.objects.all().values_list('pk', flat=True) )
+        user_group = Group.objects.filter(pk__in=User_group.objects.filter(rank=2).values_list('group', flat=True) )
         return render(request, 'group_list.html', {'groups':groups, 'user_group':user_group}, content_type='text/html')
     else:
         return render(request, '403.html', content_type='text/html')
@@ -92,7 +92,7 @@ def group_add_user(request):
                     add_user = User_group.objects.create(
                             user = User.objects.get(username = request.POST["user"]),
                             group = Group.objects.get(pk = request.GET['id']),
-                            rank = 0,
+                            rank = request.POST["rank"],
                         )
                     add_user.save
                     message = "Utilisatuer ajouter"
@@ -120,8 +120,8 @@ def group_user_list(request):
 
 def group_user_delete_confirmation(request):
     try:
-        if request.user.is_authenticated() and User_group.objects.filter(user__username=request.user.username).filter(group=request.GET['id']).exists() and User_group.objects.filter(user__username=request.user.username).get(group=request.GET['id']).rank == 2:
-            return render(request, 'group_user_delete.html', {"url":request.GET['id']}, content_type='text/html')
+        if request.user.is_authenticated() and User_group.objects.filter(user__username=request.user.username).filter(group=request.GET['group']).exists() and User_group.objects.filter(user__username=request.user.username).get(group=request.GET['group']).rank == 2:
+            return render(request, 'group_user_delete.html', {"group":request.GET['group'], "user":request.GET['user']}, content_type='text/html')
         else:
             return render(request, '403.html', content_type='text/html')
     except:
@@ -129,12 +129,22 @@ def group_user_delete_confirmation(request):
 
 def group_user_delete(request):
     try:
-        if request.user.is_authenticated() and User_group.objects.filter(user__username=request.user.username).filter(group=request.GET['id']).exists() and User_group.objects.filter(user__username=request.user.username).get(group=request.GET['id']).rank == 2:
-            delete_request = Group.objects.filter(pk=request.GET['id'])
+        if request.user.is_authenticated() and User_group.objects.filter(user__username=request.user.username).filter(group=request.GET['group']).exists() and User_group.objects.filter(user__username=request.user.username).get(group=request.GET['group']).rank == 2:
+            delete_request = User_group.objects.filter(group=request.GET['group']).filter(user=request.GET['user'])
             delete_request.delete()
 
-            return HttpResponseRedirect("/group/user/list/?id="+request.GET['id'])
+            return HttpResponseRedirect("/group/user/list/?id="+request.GET['group'])
         else:
             return render(request, '403.html', content_type='text/html')
     except:
-         return render(request, '404.html', content_type='text/html')
+        return render(request, '404.html', content_type='text/html')
+
+def group_choice(request):
+    if request.method == "POST":
+        request.session["group"] = request.POST["group"]
+    groups = User_group.objects.filter(user__username=request.user.username)
+    try:
+        actu = request.session["group"]
+    except:
+        actu = "user"
+    return render(request, 'group_choice.html', {'groups':groups, 'actu':actu}, content_type='text/html')
