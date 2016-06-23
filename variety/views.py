@@ -291,3 +291,18 @@ def variety_request_update(request, categ):
             return render(request, '404.html', content_type='text/html')
     else:
         return render(request, '403.html', content_type='text/html')
+
+def varieties_inventory_public(request, type, id):
+    #try:
+    if type=="user":
+        varieties = Catalog.objects.filter(user=Profile.objects.get(code=id).user)
+        user = Profile.objects.get(code=id).user.username
+    elif type=="group":
+        varieties = Catalog_group.objects.filter(group__code=id)
+        user = Group.objects.get(code=id).title
+    else:
+        return render(request, '404.html', content_type='text/html')
+
+    return render(request, 'variety_inventory_public.html', {'varieties':varieties, 'user':user}, content_type='text/html')
+    """except:
+        return render(request, '404.html', content_type='text/html')"""

@@ -29,4 +29,6 @@ urlpatterns = [
     url(r'^delete/confirmation/varieties_request/(?P<categ>[\w-]+)$', variety_request_delete_confirmation, name='variety_request_delete'),
     url(r'^delete/varieties_request/(?P<categ>[\w-]+)$', variety_request_delete, name='variety_request_delete'),
     url(r'^update/varieties_request/(?P<categ>[\w-]+)$', variety_request_update, name='variety_request_update'),
+    
+    url(r'^varieties_inventory/(?P<type>[\w-]+)/(?P<id>[\w-]+)$', varieties_inventory_public, name='varieties_inventory_public'),
 ]

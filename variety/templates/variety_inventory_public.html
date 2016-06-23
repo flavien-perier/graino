@@ -1,0 +1,28 @@
+﻿{% extends "index.html" %}
+{% load static %}
+{% load mptt_tags %}
+{% load filters %}
+
+{% block main %}
+    <h1>Liste des variétés de {{user}}</h1>
+
+    <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Variétée</th>
+            <th>Quantitée</th>
+            <th>Quantitée partageable</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        {% for o in varieties %}
+        <tr>
+            <td>{{ o.variety.title }}</td>
+            <td>{{ o.qtt }}</td>
+            <td>{{ o.shares_qtt }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

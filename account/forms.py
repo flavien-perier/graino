@@ -7,6 +7,8 @@ from pygeocoder import Geocoder
 
 from variety.models import *
 
+import random
+
 class CreationUserForm(forms.Form):
     email = forms.EmailField(label="Adresse e-mail", max_length=100)
     username = forms.CharField(label="Nom d'utilisateur", max_length=100)
@@ -39,7 +41,8 @@ class CreationUserForm(forms.Form):
             )
         new_user.save()
         new_profile = Profile.objects.create(
-                user = User.objects.get(username=cleaned_data['username'])
+                user = User.objects.get(username=cleaned_data['username']),
+                code = random.randrange(0, 999999999999999, 3)
             )
         new_profile.save()
         

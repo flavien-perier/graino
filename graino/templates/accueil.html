@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% load static %}
+{% load filters %}
 {% include 'autocomplete_light/static.html' %}
 
 {% block main %}
@@ -29,7 +30,7 @@
                 <a href="{{STATIC_URL}}/categories/fruitiers">
                     <img class="block" src="/{{ fruitiers.illustration }}" alt="Fruits" title="Fruits"/>
                 </a>
-                </br>
+                <br>
                 <a href="{{STATIC_URL}}/categories/legumes-racines">
                     <img class="block" src="/{{ legumes_racines.illustration }}" alt="Racines" title="Racines"/>
                 </a>
@@ -49,18 +50,16 @@
                 <input type="submit" value="Rechercher"/>
             </form>
             
-            <h1 class="aligncenter">Votre position</h1>
-            
             {% if request.user.is_authenticated %}
-                
-                <div id="map" style="height:400px;width:800px;margin-left:auto;margin-right:auto;"></div>
+            
+                <h1 class="aligncenter">Votre position</h1>
                     <script>
                         $(document).ready(function(){
                          var map = new GMaps({
                             el: '#map',
-                            lat: '{{pos.lat}}',
-                            lng: '{{pos.lng}}',
-                            zoom: 12,
+                            lat: '{{pos_user.lat}}',
+                            lng: '{{pos_user.lng}}',
+                            zoom: 9,
                             zoomControl : true,
                             zoomControlOpt: {
                                 style : 'SMALL',
@@ -69,14 +68,48 @@
                             panControl : false,
                           });
                           map.addMarker({
-                            lat: '{{pos.lat}}',
-                            lng: '{{pos.lng}}'
+                            lat: '{{pos_user.lat}}',
+                            lng: '{{pos_user.lng}}',
+                            title: 'Vous',
                           });
+                          {% for o in pos_graino %}
+                              map.addMarker({
+                                lat: '{{o.lt|virgulepoint}}',
+                                lng: '{{o.lg|virgulepoint}}',
+                                title: '{{o.title}}',
+                                icon: 'https://www.google.com/maps/vt/icon/name=icons/spotlight/directions_decision_point_walking_hover_large.png&scale=1.2'
+                              });
+                          {% endfor %}
                         });
                     </script>
             {% else %}
-                <h1 class="aligncenter">Les grainotèques</h1>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d88916.29497592128!2d1.161686480435562!3d45.858619500272816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f934afe6680461%3A0x10be4a3159364d11!2sLimoges!5e0!3m2!1sfr!2sfr!4v1464885277511" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <h1 class="aligncenter">Les grainothèques</h1>
+                <script>
+                        $(document).ready(function(){
+                         var map = new GMaps({
+                            el: '#map',
+                            lat: '{{pos.lat}}',
+                            lng: '{{pos.lng}}',
+                            zoom: 9,
+                            zoomControl : true,
+                            zoomControlOpt: {
+                                style : 'SMALL',
+                                position: 'TOP_LEFT'
+                            },
+                            panControl : false,
+                          });
+                          {% for o in pos_graino %}
+                            {% if o.lt != "none" and o.lg != "none" %}
+                          map.addMarker({
+                            lat: '{{o.lt|virgulepoint}}',
+                            lng: '{{o.lg|virgulepoint}}',
+                            title: '{{o.title}}',
+                            icon: 'https://www.google.com/maps/vt/icon/name=icons/spotlight/directions_decision_point_walking_hover_large.png&scale=1.2'
+                          });
+                            {% endif %}
+                          {% endfor %}
+                          });
+                    </script>
             {% endif %}
-
+            <div id="map" style="height:400px;width:800px;margin-left:auto;margin-right:auto;"></div>
 {% endblock %}

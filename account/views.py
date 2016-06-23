@@ -57,7 +57,7 @@ def me_edit(request):
         
 def user_list(request):
     if request.user.is_authenticated():
-        users = User.objects.all()
+        users = Profile.objects.all()
         return render(request, 'user_list.html', {'users':users}, content_type='text/html')
     else:
         return render(request, '403.html', content_type='text/html')

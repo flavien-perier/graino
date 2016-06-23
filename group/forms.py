@@ -7,11 +7,13 @@ from pygeocoder import Geocoder
 
 from variety.models import *
 
+import random
+
 class CreationGroupForm(forms.ModelForm):
 
     class Meta:
         model = Group
-        fields = ['title', 'country', 'city', 'address', 'zip_code', 'lg', 'lt'] 
+        fields = ['title', 'code', 'country', 'city', 'address', 'zip_code', 'lg', 'lt'] 
         labels = {
             'title':"Nom",
             'country':"Pays",
@@ -20,6 +22,9 @@ class CreationGroupForm(forms.ModelForm):
             'zip_code':"Code postale",
             'lg':"Longitude",
             'lt':"Latitude",
+        }
+        widgets = {
+            'code': forms.HiddenInput(),
         }
     
     def save(self):
@@ -33,6 +38,7 @@ class CreationGroupForm(forms.ModelForm):
                 pass
         
         self.instance.title = cleaned_data['title']
+        self.instance.code = random.randrange(0, 999999999999999, 3)
         self.instance.country = cleaned_data['country']
         self.instance.city = cleaned_data['city']
         self.instance.address = cleaned_data['address']

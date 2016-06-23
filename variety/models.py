@@ -54,6 +54,8 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    code = models.CharField(max_length=20, blank=True, null=True)
+    
     country = models.CharField(max_length=250, blank=True, null=True)
     city = models.CharField(max_length=250, blank=True, null=True)
     address = models.CharField(max_length=250, blank=True, null=True)
@@ -74,6 +76,9 @@ class Profile(models.Model):
 @python_2_unicode_compatible
 class Group(models.Model):
     title = models.CharField(max_length=250, unique=True)
+    
+    code = models.CharField(max_length=20, blank=True, null=True)
+    
     country = models.CharField(max_length=250, blank=True, null=True)
     city = models.CharField(max_length=250, blank=True, null=True)
     address = models.CharField(max_length=250, blank=True, null=True)

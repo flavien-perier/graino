@@ -14,16 +14,18 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>e-mail</th>
+                <th>Voir variétées</th>
             </tr>
             </thead>
             <tbody>
             
             {% for o in users %}
             <tr>
-                <td>{{ o.username }}</td>
-                <td>{{ o.last_name }}</td>
-                <td>{{ o.first_name }}</td>
-                <td>{{ o.email }}</td>
+                <td>{{ o.user.username }}</td>
+                <td>{{ o.user.last_name }}</td>
+                <td>{{ o.user.first_name }}</td>
+                <td>{{ o.user.email }}</td>
+                <td><a href="/varieties_inventory/user/{{ o.code }}">Voir</a></td>
             </tr>
             {% endfor %}
             </tbody>

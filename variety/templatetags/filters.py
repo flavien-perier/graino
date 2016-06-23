@@ -10,3 +10,8 @@ def stripaccents(value, arg=""):
     return ''.join((c for c in unicodedata.normalize('NFD', value) if unicodedata.category(c) != 'Mn'))
 
 register.filter("stripaccents", stripaccents)
+
+def virgulepoint(value, arg=""):
+    return str(value).replace(",",".")
+    
+register.filter("virgulepoint", virgulepoint)
