@@ -63,3 +63,15 @@ node de la façon suivante :
 
 
 Pour tout détail de configuration `dploy` référez vous à la [documentation officielle](https://github.com/LeanMeanFightingMachine/dploy).
+
+## Fonctionalitées : 
+* Actuellement le projet est capable de gérer des catégories de graines en cascade, et d'associer à chacune de ces catégories un ensemble de variétées.
+* Il est possible de se créer un compte, et de le gérer.
+ - Possibilitée de modifier ses informations personelle (Nom, Prénom, Adresse).
+ - Possibilitée d'ajouter des variétées et/ou des catégories à celles déjà référencées.
+ - Possibilitée de tenir un inventaire et une liste demandes.
+ - Possibilitée de créer et/ou d'être invité à rejoindre un groupe.
+ - Possibilité d'ajouter et/ou supprimer des variétées aux inventaires des groupes aux quelles on appartiens.
+* Géolocalisation des groupes (Grainothèques).
+* Moteur de recherche des Variétées / Catégories présentes dans la base.
+ - Le moteur de recherche ne gére pas encore l'autocomplésion.
