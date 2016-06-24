@@ -65,5 +65,4 @@ node de la façon suivante :
 Pour tout détail de configuration `dploy` référez vous à la [documentation officielle](https://github.com/LeanMeanFightingMachine/dploy).
 
 * test
-- test1
--- test2
+ * test1
