@@ -66,3 +66,4 @@ Pour tout détail de configuration `dploy` référez vous à la [documentation o
 
 * test
  * test1
+  * test2
